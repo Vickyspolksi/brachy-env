@@ -1,0 +1,595 @@
+This file containes any messages produced by the compiler while
+running compilation tests to check the availibility of various
+functions and subroutines
+
+********************* basic compilation test *******************
+
+********************* Can the compiler produce executables ? ******************
+
+********************* Fortran version ***************************************
+test_arg = '-v': 
+Using built-in specs. COLLECT_GCC=gfortran OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa OFFLOAD_TARGET_DEFAULT=1 Target: x86_64-linux-gnu Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2 Thread model: posix Supported LTO compression algorithms: zlib zstd gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04) COLLECT_GCC_OPTIONS='-v' '-c' '-mtune=generic' '-march=x86-64' /usr/lib/gcc/x86_64-linux-gnu/11/f951 conftest.f -ffixed-form -quiet -dumpbase conftest.f -dumpbase-ext .f -mtune=generic -march=x86-64 -version -fintrinsic-modules-path /usr/lib/gcc/x86_64-linux-gnu/11/finclude -fpre-include=/usr/include/finclude/math-vector-fortran.h -o /tmp/ccw6oVlN.s GNU Fortran (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu) compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072 GNU Fortran2008 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu) compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072 COLLECT_GCC_OPTIONS='-v' '-c' '-mtune=generic' '-march=x86-64' as -v --64 -o conftest.o /tmp/ccw6oVlN.s GNU ensamblador versión 2.38 (x86_64-linux-gnu) utilizando BFD versión (GNU Binutils for Ubuntu) 2.38 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/ LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/ COLLECT_GCC_OPTIONS='-v' '-c' '-mtune=generic' '-march=x86-64'
+********************* compilation flags test *******************
+********************* exit test ********************
+Trying exit
+arg = 0, returns 0
+arg = 1, returns 1
+arg = 25, returns 25
+********************* system intrinsic tests ******************
+hallo
+test_status = 0
+sh: 1: blah__blah: not found
+test_status = 1
+
+********************* date_and_time test ******************
+
+********************* flush test *****************
+
+********************* fdate test ******************
+
+********************* secnds test ******************
+
+********************* date test ******************
+/usr/bin/ld: /tmp/ccFTsEy8.o: en la función `MAIN__':
+conftest.f:(.text+0x15): referencia a `date_' sin definir
+collect2: error: ld returned 1 exit status
+/usr/bin/ld: /tmp/ccvGDvK9.o: en la función `MAIN__':
+conftest.f:(.text+0x15): referencia a `date__' sin definir
+collect2: error: ld returned 1 exit status
+
+********************* time test ******************
+/usr/bin/ld: /tmp/ccVbloO4.o: en la función `MAIN__':
+conftest.f:(.text+0x15): referencia a `time_' sin definir
+collect2: error: ld returned 1 exit status
+/usr/bin/ld: /tmp/cce23rcE.o: en la función `MAIN__':
+conftest.f:(.text+0x15): referencia a `time__' sin definir
+collect2: error: ld returned 1 exit status
+
+********************* etime test ******************
+
+********************* lnblnk test ******************
+
+********************* hostnm test ******************
+
+********************* lstat test ******************
+
+********************* inquire for directories ******************
+
+********************* record length of unformatted I/O ******************
+
+********************* endianess  ******************
+
+********************* availability of integer*8  ******************
+
+********************* availability of integer*2  ******************
+
+************************ fortran name mangling scheme ********************
+
+CC = gcc
+C_FLAGS = -O2 -fPIC -mtune=native -mcmodel=medium
+Fortran compile OK
+C compile OK
+Link step OK
+ ******************** compile egs_c_utils.c **************
+ ******************** compile load_beamlib.c **************
+ ******************** compile load_vculib.c **************
+********** compile read_write_pardose **********
+ ******************** library for dlopen **************
+
+********************* Compiling Mortran3 ******************
+Compiling mortran3.f /home/usuario/EGSnrc_CLRP/HEN_HOUSE/lib/linux/machine.f
+mortran3.f:2278:72:
+
+ 2278 | 99       O(J+M-1)=ICHAR(CH(M))
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 99 at (1)
+mortran3.f:2287:72:
+
+ 2287 | 5181        CH(L)=CHAR( HC(L)  )
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 5181 at (1)
+Making mortran3.dat
+
+********************* Compiling pegs4 ******************
+Generating pegs4_linux.f from pegs4.mortran
+mortran3.exe: using following I/O units
+  raw/hex data file: /home/usuario/EGSnrc_CLRP/HEN_HOUSE/bin/linux/mortran3.dat
+  command line files: 
+  -> appending /home/usuario/EGSnrc_CLRP/HEN_HOUSE/lib/linux/machine.macros
+  -> appending pegs4.mortran
+  -> appending /home/usuario/EGSnrc_CLRP/HEN_HOUSE/lib/linux/machine.mortran
+  generated mortjob.mortran
+  fortran output: pegs4_linux.f
+  mortlst output: pegs4_linux.mortlst
+
+  Mortran compiling ...  OK
+Compiling pegs4_linux.f with flags '-fPIC -O2 -mtune=native -mcmodel=medium'
+pegs4_linux.f:3610:28:
+
+ 3610 |       real*4 FUNCTION PAIRFR(E)
+      |                            1
+......
+ 3685 |       REAL FUNCTION PAIRFR(X)
+      |                          2  
+Warning: INTENT mismatch in argument 'x' between (1) and (2)
+pegs4_linux.f:3639:28:
+
+ 3639 |       real*4 FUNCTION PAIRFZ(E)
+      |                            1
+......
+ 3699 |       REAL FUNCTION PAIRFZ(X)
+      |                          2  
+Warning: INTENT mismatch in argument 'x' between (1) and (2)
+
+
+cat >&5 <<EOF
+
+********************* Compiling beam_build ******************
+Mortran compiling beam_build
+Compiling beam_build_linux.f using flags -O2 -mtune=native -mcmodel=medium -fPIC
+
+********************* Compiling beamnrc progs ***************
+Mortran compiling beamdp sources ...
+mortran3.exe: using following I/O units
+  raw/hex data file: /home/usuario/EGSnrc_CLRP/HEN_HOUSE/bin/linux/mortran3.dat
+  command line files: 
+  -> appending /home/usuario/EGSnrc_CLRP/HEN_HOUSE/lib/linux/machine.macros
+  -> appending /home/usuario/EGSnrc_CLRP/HEN_HOUSE/utils/phsp_macros.mortran
+  -> appending beamdp.mortran
+  -> appending /home/usuario/EGSnrc_CLRP/HEN_HOUSE/utils/xvgrplot.mortran
+  -> appending /home/usuario/EGSnrc_CLRP/HEN_HOUSE/src/lnblnk1.mortran
+  generated mortjob.mortran
+  fortran output: beamdp_linux.f
+  mortlst output: beamdp_linux.mortlst
+
+  Mortran compiling ...  OK
+Fortran compiling beamdp_linux.f using flags -O2 -mtune=native -mcmodel=medium -fPIC
+/home/usuario/EGSnrc_CLRP/HEN_HOUSE/bin/linux/mortran3.exe -d /home/usuario/EGSnrc_CLRP/HEN_HOUSE/bin/linux/mortran3.dat -f /home/usuario/EGSnrc_CLRP/HEN_HOUSE/lib/linux/machine.macros /home/usuario/EGSnrc_CLRP/HEN_HOUSE/user_codes/dosxyznrc/dosxyznrc_user_macros.mortran ctcreate.mortran /home/usuario/EGSnrc_CLRP/HEN_HOUSE/src/lnblnk1.mortran -o7 ctcreate_linux.F -o8 ctcreate_linux.mortlst
+mortran3.exe: using following I/O units
+  raw/hex data file: /home/usuario/EGSnrc_CLRP/HEN_HOUSE/bin/linux/mortran3.dat
+  command line files: 
+  -> appending /home/usuario/EGSnrc_CLRP/HEN_HOUSE/lib/linux/machine.macros
+  -> appending /home/usuario/EGSnrc_CLRP/HEN_HOUSE/user_codes/dosxyznrc/dosxyznrc_user_macros.mortran
+  -> appending ctcreate.mortran
+  -> appending /home/usuario/EGSnrc_CLRP/HEN_HOUSE/src/lnblnk1.mortran
+  generated mortjob.mortran
+  fortran output: ctcreate_linux.F
+  mortlst output: ctcreate_linux.mortlst
+
+  Mortran compiling ...  OK
+gcc -c -O2 -fPIC -mtune=native -mcmodel=medium  -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/lib/linux -o ReadCT_DICOM.o ReadCT_DICOM.c
+In file included from ReadCT_DICOM.c:68:
+ReadCT_DICOM.c:336:10: warning: return type defaults to ‘int’ [-Wimplicit-int]
+  336 | F77_OBJ_(readct_dicom,READCT_DICOM)(char *ct_filename, int ct_arraysize[3],
+      |          ^~~~~~~~~~~~
+/home/usuario/EGSnrc_CLRP/HEN_HOUSE/lib/linux/egs_config1.h:49:31: note: in definition of macro ‘F77_OBJ_’
+   49 | #define F77_OBJ_(fname,FNAME) fname##_
+      |                               ^~~~~
+gfortran -fPIC -O2 -mtune=native -mcmodel=medium -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/bin/linux/ctcreate ctcreate_linux.F ReadCT_DICOM.o
+Mortran compiling statdose sources ...
+mortran3.exe: using following I/O units
+  raw/hex data file: /home/usuario/EGSnrc_CLRP/HEN_HOUSE/bin/linux/mortran3.dat
+  command line files: 
+  -> appending /home/usuario/EGSnrc_CLRP/HEN_HOUSE/lib/linux/machine.macros
+  -> appending statdose.mortran
+  -> appending /home/usuario/EGSnrc_CLRP/HEN_HOUSE/lib/linux/machine.mortran
+  -> appending /home/usuario/EGSnrc_CLRP/HEN_HOUSE/utils/xvgrplot.mortran
+  -> appending /home/usuario/EGSnrc_CLRP/HEN_HOUSE/src/lnblnk1.mortran
+  generated mortjob.mortran
+  fortran output: statdose_linux.f
+  mortlst output: statdose_linux.mortlst
+
+  Mortran compiling ...  OK
+Fortran compiling statdose_linux.f using flags -O2 -mtune=native -mcmodel=medium -fPIC 
+Mortran compiling readphsp sources ...
+mortran3.exe: using following I/O units
+  raw/hex data file: /home/usuario/EGSnrc_CLRP/HEN_HOUSE/bin/linux/mortran3.dat
+  command line files: 
+  -> appending /home/usuario/EGSnrc_CLRP/HEN_HOUSE/lib/linux/machine.macros
+  -> appending /home/usuario/EGSnrc_CLRP/HEN_HOUSE/utils/phsp_macros.mortran
+  -> appending readphsp.mortran
+  -> appending /home/usuario/EGSnrc_CLRP/HEN_HOUSE/src/lnblnk1.mortran
+  generated mortjob.mortran
+  fortran output: readphsp_linux.f
+  mortlst output: readphsp_linux.mortlst
+
+  Mortran compiling ...  OK
+Fortran compiling readphsp_linux.f using flags -O2 -mtune=native -mcmodel=medium -fPIC 
+gcc -O2  -I/usr/X11R6/include  -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/bin/linux/dosxyz_show -L/usr/X11R6/lib  dosxyz_show.c -lXm -lXt -lX11 -lm
+dosxyz_show.c:34:10: fatal error: Xm/XmAll.h: No existe el archivo o el directorio
+   34 | #include <Xm/XmAll.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
+gmake: *** [Makefile:62: /home/usuario/EGSnrc_CLRP/HEN_HOUSE/bin/linux/dosxyz_show] Error 1
+Failed program was gmake EGS_CONFIG=/home/usuario/EGSnrc_CLRP/HEN_HOUSE/specs/linux.conf
+Mortran compiling addphsp sources ...
+mortran3.exe: using following I/O units
+  raw/hex data file: /home/usuario/EGSnrc_CLRP/HEN_HOUSE/bin/linux/mortran3.dat
+  command line files: 
+  -> appending /home/usuario/EGSnrc_CLRP/HEN_HOUSE/lib/linux/machine.macros
+  -> appending /home/usuario/EGSnrc_CLRP/HEN_HOUSE/src/egsnrc.macros
+  -> appending /home/usuario/EGSnrc_CLRP/HEN_HOUSE/utils/phsp_macros.mortran
+  -> appending addphsp.mortran
+  -> appending /home/usuario/EGSnrc_CLRP/HEN_HOUSE/src/lnblnk1.mortran
+  generated mortjob.mortran
+  fortran output: addphsp_linux.f
+  mortlst output: addphsp_linux.mortlst
+
+  Mortran compiling ...  OK
+Fortran compiling addphsp_linux.f using flags -O2 -mtune=native -mcmodel=medium -fPIC
+
+***************************** begin C++ configuration *************************
+
+Using the following compiler/linker switches for creating/linking against
+dynamic shared objects (DSO, a.k.a. shared library or DLL), where
+$(abs_dso) or $(ABS_DSO) below will be replaced with the absolute path to the
+EGSnrc DSO directory at compile/link time:
+
+1) Optimization options:                          -O2 -mtune=native -mcmodel=medium -std=c++14
+2) Generation of position independent code:       -fPIC
+3) Preprocessor defines:                          
+4) Flag for creating shared libraries:            -shared
+5) Output/dlopen library:                         -o $@ -ldl 
+6) DSO path encoded in the executable:            -L$(abs_dso) -Wl,-rpath,$(abs_dso)
+7) Linking against library some_lib:              -lsome_lib
+8) Fortran libraries needed by C++ linker:        -lgfortran -lquadmath
+
+
+****************** Building the IAEA phase space library *********************
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE//lib/linux -fPIC -DBUILD_IAEA_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE//egs++/dso/linux/iaea_phsp.o iaea_phsp.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE//lib/linux -fPIC -DBUILD_IAEA_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE//egs++/dso/linux/iaea_header.o iaea_header.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE//lib/linux -fPIC -DBUILD_IAEA_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE//egs++/dso/linux/iaea_record.o iaea_record.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE//lib/linux -fPIC -DBUILD_IAEA_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE//egs++/dso/linux/utilities.o utilities.cpp
+utilities.cpp: In function ‘FILE* open_file(char*, const char*, const char*)’:
+utilities.cpp:243:46: warning: non-constant array new length must be specified without parentheses around the type-id [-Wvla]
+  243 |    char *filename1 = new(char[filenameLength]);
+      |                                              ^
+utilities.cpp:227:12: warning: ignoring return value of ‘char* fgets(char*, int, FILE*)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  227 |       fgets(string,MAX_STR_LEN,stdin);
+      |       ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+utilities.cpp: In function ‘int ok_check()’:
+utilities.cpp:266:9: warning: ignoring return value of ‘char* fgets(char*, int, FILE*)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  266 |    fgets(reply,MAX_STR_LEN,stdin);
+      |    ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE//lib/linux -fPIC -DBUILD_IAEA_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared  /home/usuario/EGSnrc_CLRP/HEN_HOUSE//egs++/dso/linux/iaea_phsp.o /home/usuario/EGSnrc_CLRP/HEN_HOUSE//egs++/dso/linux/iaea_header.o /home/usuario/EGSnrc_CLRP/HEN_HOUSE//egs++/dso/linux/iaea_record.o /home/usuario/EGSnrc_CLRP/HEN_HOUSE//egs++/dso/linux/utilities.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE//egs++/dso/linux/libiaea_phsp.so -ldl  
+ ********************* OK ************************
+
+
+************************ Building the EGSnrc C++ class library ***************
+g++ -I../lib/linux -fPIC -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egspp.o egspp.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_input.o egs_input.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_base_geometry.o egs_base_geometry.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_library.o egs_library.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_transformations.o egs_transformations.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_rndm.o egs_rndm.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_shapes.o egs_shapes.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_geometry_tester.o egs_geometry_tester.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_timer.o egs_timer.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_polygon.o egs_polygon.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_projectors.o egs_projectors.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_alias_table.o egs_alias_table.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_object_factory.o egs_object_factory.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_spectra.o egs_spectra.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_base_source.o egs_base_source.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_functions.o egs_functions.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_application.o egs_application.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_run_control.o egs_run_control.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_scoring.o egs_scoring.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_interpolator.o egs_interpolator.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_atomic_relaxations.o egs_atomic_relaxations.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_ausgab_object.o egs_ausgab_object.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_particle_track.o egs_particle_track.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_fortran_geometry.o egs_fortran_geometry.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o dso/linux/egs_ensdf.o egs_ensdf.cpp
+g++ -I../lib/linux -fPIC -DBUILD_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared dso/linux/egs_input.o dso/linux/egs_base_geometry.o dso/linux/egs_library.o dso/linux/egs_transformations.o dso/linux/egs_rndm.o dso/linux/egs_shapes.o dso/linux/egs_geometry_tester.o dso/linux/egs_timer.o dso/linux/egs_polygon.o dso/linux/egs_projectors.o dso/linux/egs_alias_table.o dso/linux/egs_object_factory.o dso/linux/egs_spectra.o dso/linux/egs_base_source.o dso/linux/egs_functions.o dso/linux/egs_application.o dso/linux/egs_run_control.o dso/linux/egs_scoring.o dso/linux/egs_interpolator.o dso/linux/egs_atomic_relaxations.o dso/linux/egs_ausgab_object.o dso/linux/egs_particle_track.o dso/linux/egs_fortran_geometry.o dso/linux/egs_ensdf.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegspp.so -ldl 
+g++ -I../lib/linux -fPIC -O2 -mtune=native -mcmodel=medium -std=c++14 -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/bin/linux/egspp dso/linux/egspp.o -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -legspp
+cd geometry/egs_planes && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_planes'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_PLANES_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_planes.o egs_planes.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_PLANES_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_planes.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_planes.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_planes'
+cd geometry/egs_cd_geometry && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_cd_geometry'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_CDGEOMETRY_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_cd_geometry.o egs_cd_geometry.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_CDGEOMETRY_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_cd_geometry.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_cdgeometry.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_cd_geometry'
+cd geometry/egs_gtransformed && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_gtransformed'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_GTRANSFORMED_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_gtransformed.o egs_gtransformed.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_GTRANSFORMED_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_gtransformed.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_gtransformed.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_gtransformed'
+cd geometry/egs_nd_geometry && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_nd_geometry'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_NDG_DLL -DEXPLICIT_XYZ -DBUILD_GZSTREAM -DHAS_GZSTREAM -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_nd_geometry.o egs_nd_geometry.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_NDG_DLL -DEXPLICIT_XYZ -DBUILD_GZSTREAM -DHAS_GZSTREAM -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/gzstream.o gzstream.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_NDG_DLL -DEXPLICIT_XYZ -DBUILD_GZSTREAM -DHAS_GZSTREAM -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_nd_geometry.o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/gzstream.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_ndgeometry.so -ldl  -legspp -legs_planes -lz
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_nd_geometry'
+cd geometry/egs_box && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_box'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_BOX_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_box.o egs_box.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_BOX_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_box.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_box.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_box'
+cd geometry/egs_genvelope && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_genvelope'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_ENVELOPEG_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_envelope_geometry.o egs_envelope_geometry.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_ENVELOPEG_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_envelope_geometry.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_genvelope.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_genvelope'
+cd geometry/egs_spheres && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_spheres'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_SPHERES_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_spheres.o egs_spheres.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_SPHERES_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_spheres.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_spheres.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_spheres'
+cd geometry/egs_cylinders && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_cylinders'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_CYLINDERS_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_cylinders.o egs_cylinders.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_CYLINDERS_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_cylinders.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_cylinders.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_cylinders'
+cd geometry/egs_iplanes && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_iplanes'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_IPLANES_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_iplanes.o egs_iplanes.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_IPLANES_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_iplanes.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_iplanes.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_iplanes'
+cd geometry/egs_cones && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_cones'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_CONES_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_cones.o egs_cones.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_CONES_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_cones.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_cones.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_cones'
+cd geometry/egs_gstack && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_gstack'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_STACKG_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_stack_geometry.o egs_stack_geometry.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_STACKG_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_stack_geometry.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_gstack.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_gstack'
+cd geometry/egs_prism && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_prism'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_PRISM_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_prism.o egs_prism.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_PRISM_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_prism.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_prism.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_prism'
+cd geometry/egs_union && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_union'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_UNIONG_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_union_geometry.o egs_union_geometry.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_UNIONG_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_union_geometry.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_gunion.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_union'
+cd geometry/egs_pyramid && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_pyramid'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_PYRAMID_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_pyramid.o egs_pyramid.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_PYRAMID_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_pyramid.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_pyramid.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_pyramid'
+cd geometry/egs_conez && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_conez'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_CONEZ_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_conez.o egs_conez.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_CONEZ_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_conez.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_conez.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_conez'
+cd geometry/egs_space && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_space'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_SPACE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_space.o egs_space.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_SPACE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_space.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_space.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_space'
+cd geometry/egs_elliptic_cylinders && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_elliptic_cylinders'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_ELLIPTIC_CYLINDERS_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_elliptic_cylinders.o egs_elliptic_cylinders.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_ELLIPTIC_CYLINDERS_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_elliptic_cylinders.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_elliptic_cylinders.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_elliptic_cylinders'
+cd geometry/egs_smart_envelope && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_smart_envelope'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_SMART_ENVELOPE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_smart_envelope.o egs_smart_envelope.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_SMART_ENVELOPE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_smart_envelope.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_smart_envelope.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_smart_envelope'
+cd geometry/egs_vhp_geometry && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_vhp_geometry'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_VHP_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_vhp_geometry.o egs_vhp_geometry.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_VHP_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_vhp_geometry.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_vhp_geometry.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_vhp_geometry'
+cd geometry/egs_octree && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_octree'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_OCTREE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_octree.o egs_octree.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_OCTREE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_octree.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_octree.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_octree'
+cd geometry/egs_roundrect_cylinders && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_roundrect_cylinders'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_ROUNDRECT_CYLINDERS_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_roundrect_cylinders.o egs_roundrect_cylinders.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_ROUNDRECT_CYLINDERS_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_roundrect_cylinders.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_roundrect_cylinders.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_roundrect_cylinders'
+cd geometry/egs_rz && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_rz'
+cd ../egs_nd_geometry && gmake
+gmake[2]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_nd_geometry'
+gmake[2]: '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_ndgeometry.so' está actualizado.
+gmake[2]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_nd_geometry'
+cd ../egs_cylinders && gmake
+gmake[2]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_cylinders'
+gmake[2]: '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_cylinders.so' está actualizado.
+gmake[2]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_cylinders'
+cd ../egs_planes && gmake
+gmake[2]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_planes'
+gmake[2]: '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_planes.so' está actualizado.
+gmake[2]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_planes'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -Wall -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_rz.o egs_rz.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -Wall -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_rz.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_rz.so -ldl  -legspp -legs_planes -legs_cylinders -legs_ndgeometry
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_rz'
+cd geometry/egs_autoenvelope && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_autoenvelope'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_AENVELOPE_DLL -DBUILD_SOBOL_DLL -DBUILD_AE_SOBOL -DHAS_SOBOL -DBUILD_GZSTREAM -DHAS_GZSTREAM -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_autoenvelope.o egs_autoenvelope.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_AENVELOPE_DLL -DBUILD_SOBOL_DLL -DBUILD_AE_SOBOL -DHAS_SOBOL -DBUILD_GZSTREAM -DHAS_GZSTREAM -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/sobol.o sobol.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_AENVELOPE_DLL -DBUILD_SOBOL_DLL -DBUILD_AE_SOBOL -DHAS_SOBOL -DBUILD_GZSTREAM -DHAS_GZSTREAM -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_sobol.o egs_sobol.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_AENVELOPE_DLL -DBUILD_SOBOL_DLL -DBUILD_AE_SOBOL -DHAS_SOBOL -DBUILD_GZSTREAM -DHAS_GZSTREAM -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_autoenvelope.o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/sobol.o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_sobol.o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/gzstream.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_autoenvelope.so -ldl  -legs_gtransformed -legspp -lz
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_autoenvelope'
+cd geometry/egs_lattice && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_lattice'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_LATTICE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_lattice.o egs_lattice.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_LATTICE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_lattice.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_lattice.so -ldl  -legspp -legs_gtransformed
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_lattice'
+cd geometry/egs_glib && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_glib'
+cd ../egs_nd_geometry && gmake
+gmake[2]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_nd_geometry'
+gmake[2]: '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_ndgeometry.so' está actualizado.
+gmake[2]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_nd_geometry'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_GZSTREAM -DHAS_GZSTREAM -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_glib.o egs_glib.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_GZSTREAM -DHAS_GZSTREAM -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_glib.o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/gzstream.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_glib.so -ldl  -legspp -legs_ndgeometry -legs_planes -lz
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_glib'
+cd geometry/egs_mesh && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_mesh'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_EGS_MESH_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_mesh.o egs_mesh.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_EGS_MESH_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_mesh.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_mesh.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/geometry/egs_mesh'
+cd sources/egs_collimated_source && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_collimated_source'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_COLLIMATED_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_collimated_source.o egs_collimated_source.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_COLLIMATED_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_collimated_source.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_collimated_source.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_collimated_source'
+cd sources/egs_isotropic_source && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_isotropic_source'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_ISOTROPIC_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_isotropic_source.o egs_isotropic_source.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_ISOTROPIC_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_isotropic_source.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_isotropic_source.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_isotropic_source'
+cd sources/egs_parallel_beam && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_parallel_beam'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_PARALLEL_BEAM_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_parallel_beam.o egs_parallel_beam.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_PARALLEL_BEAM_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_parallel_beam.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_parallel_beam.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_parallel_beam'
+cd sources/egs_point_source && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_point_source'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_POINT_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_point_source.o egs_point_source.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_POINT_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_point_source.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_point_source.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_point_source'
+cd sources/egs_source_collection && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_source_collection'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_SOURCE_COLLECTION_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_source_collection.o egs_source_collection.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_SOURCE_COLLECTION_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_source_collection.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_source_collection.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_source_collection'
+cd sources/egs_transformed_source && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_transformed_source'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_TRANSFORMED_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_transformed_source.o egs_transformed_source.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_TRANSFORMED_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_transformed_source.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_transformed_source.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_transformed_source'
+cd sources/egs_beam_source && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_beam_source'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_BEAM_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_beam_source.o egs_beam_source.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_BEAM_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_beam_source.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_beam_source.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_beam_source'
+cd sources/egs_phsp_source && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_phsp_source'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_PHSP_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_phsp_source.o egs_phsp_source.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_PHSP_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_phsp_source.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_phsp_source.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_phsp_source'
+cd sources/egs_angular_spread && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_angular_spread'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_ANGULAR_SPREAD_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_angular_spread_source.o egs_angular_spread_source.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_ANGULAR_SPREAD_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_angular_spread_source.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_angular_spread_source.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_angular_spread'
+cd sources/iaea_phsp_source && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/iaea_phsp_source'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I../.. -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/iaea_phsp -fPIC -DBUILD_IAEA_PHSP_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/iaea_phsp_source.o iaea_phsp_source.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I../.. -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/iaea_phsp -fPIC -DBUILD_IAEA_PHSP_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/iaea_phsp_source.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libiaea_phsp_source.so -ldl  -legspp -liaea_phsp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/iaea_phsp_source'
+cd sources/egs_radionuclide_source && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_radionuclide_source'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_RADIONUCLIDE_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_radionuclide_source.o egs_radionuclide_source.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_RADIONUCLIDE_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_radionuclide_source.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_radionuclide_source.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_radionuclide_source'
+cd sources/egs_dynamic_source && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_dynamic_source'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_DYNAMIC_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_dynamic_source.o egs_dynamic_source.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_DYNAMIC_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_dynamic_source.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_dynamic_source.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_dynamic_source'
+cd sources/egs_fano_source && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_fano_source'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_FANO_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_fano_source.o egs_fano_source.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_FANO_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_fano_source.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_fano_source.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_fano_source'
+cd sources/egs_internal_source && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_internal_source'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_INTERNAL_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_internal_source.o egs_internal_source.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_INTERNAL_SOURCE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_internal_source.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_internal_source.so -ldl  -legspp -legs_glib
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/sources/egs_internal_source'
+cd shapes/egs_circle && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_circle'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_CIRCLE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_circle.o egs_circle.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_CIRCLE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_circle.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_circle.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_circle'
+cd shapes/egs_ellipse && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_ellipse'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_ELLIPSE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_ellipse.o egs_ellipse.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_ELLIPSE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_ellipse.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_ellipse.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_ellipse'
+cd shapes/egs_extended_shape && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_extended_shape'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_EXTENDED_SHAPE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_extended_shape.o egs_extended_shape.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_EXTENDED_SHAPE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_extended_shape.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_extended_shape.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_extended_shape'
+cd shapes/egs_gaussian_shape && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_gaussian_shape'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_GAUSSIAN_SHAPE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_gaussian_shape.o egs_gaussian_shape.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_GAUSSIAN_SHAPE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_gaussian_shape.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_gaussian_shape.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_gaussian_shape'
+cd shapes/egs_line_shape && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_line_shape'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_LINE_SHAPE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_line_shape.o egs_line_shape.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_LINE_SHAPE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_line_shape.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_line_shape.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_line_shape'
+cd shapes/egs_polygon_shape && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_polygon_shape'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_POLYGON_SHAPE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_polygon_shape.o egs_polygon_shape.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_POLYGON_SHAPE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_polygon_shape.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_polygon_shape.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_polygon_shape'
+cd shapes/egs_rectangle && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_rectangle'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_RECTANGLE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_rectangle.o egs_rectangle.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_RECTANGLE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_rectangle.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_rectangle.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_rectangle'
+cd shapes/egs_shape_collection && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_shape_collection'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_SHAPE_COLLECTION_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_shape_collection.o egs_shape_collection.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_SHAPE_COLLECTION_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_shape_collection.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_shape_collection.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_shape_collection'
+cd shapes/egs_voxelized_shape && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_voxelized_shape'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_VOXELIZED_SHAPE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_voxelized_shape.o egs_voxelized_shape.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_VOXELIZED_SHAPE_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_voxelized_shape.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_voxelized_shape.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_voxelized_shape'
+cd shapes/egs_spherical_shell && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_spherical_shell'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_SPHERICAL_SHELL_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_spherical_shell.o egs_spherical_shell.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_SPHERICAL_SHELL_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_spherical_shell.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_spherical_shell.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_spherical_shell'
+cd shapes/egs_conical_shell && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_conical_shell'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_CONICAL_SHELL_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_conical_shell.o egs_conical_shell.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_CONICAL_SHELL_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_conical_shell.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_conical_shell.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_conical_shell'
+cd shapes/egs_circle_perpendicular && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_circle_perpendicular'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_CIRCLE_PERPENDICULAR_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_circle_perpendicular.o egs_circle_perpendicular.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_CIRCLE_PERPENDICULAR_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_circle_perpendicular.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_circle_perpendicular.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/shapes/egs_circle_perpendicular'
+cd ausgab_objects/egs_track_scoring && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ausgab_objects/egs_track_scoring'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_TRACK_SCORING_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_track_scoring.o egs_track_scoring.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_TRACK_SCORING_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_track_scoring.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_track_scoring.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ausgab_objects/egs_track_scoring'
+cd ausgab_objects/egs_dose_scoring && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ausgab_objects/egs_dose_scoring'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_DOSE_SCORING_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_dose_scoring.o egs_dose_scoring.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_DOSE_SCORING_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_dose_scoring.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_dose_scoring.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ausgab_objects/egs_dose_scoring'
+cd ausgab_objects/egs_radiative_splitting && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ausgab_objects/egs_radiative_splitting'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_RADIATIVE_SPLITTING_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_radiative_splitting.o egs_radiative_splitting.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_RADIATIVE_SPLITTING_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_radiative_splitting.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_radiative_splitting.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ausgab_objects/egs_radiative_splitting'
+cd ausgab_objects/egs_phsp_scoring && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ausgab_objects/egs_phsp_scoring'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I../.. -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/iaea_phsp -fPIC -DBUILD_PHSP_SCORING_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_phsp_scoring.o egs_phsp_scoring.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I../.. -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/iaea_phsp -fPIC -DBUILD_PHSP_SCORING_DLL -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_phsp_scoring.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_phsp_scoring.so -ldl  -legspp -liaea_phsp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ausgab_objects/egs_phsp_scoring'
+cd ausgab_objects/egs_fluence_scoring && gmake
+gmake[1]: se entra en el directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ausgab_objects/egs_fluence_scoring'
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_FLUENCE_SCORING_DLL  -O2 -mtune=native -mcmodel=medium -std=c++14 -c -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_fluence_scoring.o egs_fluence_scoring.cpp
+g++ -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/../lib/linux -I/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ -fPIC -DBUILD_FLUENCE_SCORING_DLL  -O2 -mtune=native -mcmodel=medium -std=c++14 -shared -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/egs_fluence_scoring.o -o /home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux/libegs_fluence_scoring.so -ldl  -legspp
+gmake[1]: se sale del directorio '/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/ausgab_objects/egs_fluence_scoring'
+g++ -I../lib/linux -fPIC -O2 -mtune=native -mcmodel=medium -std=c++14 -L/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux -Wl,-rpath,/home/usuario/EGSnrc_CLRP/HEN_HOUSE/egs++/dso/linux test_geometry.cpp -o dso/linux/gtest -legspp
+ ********************** OK ************************
+
+****************** config completed successfully ********************
+ egs_config = linux.conf
+ make_prog  = gmake

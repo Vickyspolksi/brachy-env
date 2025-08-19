@@ -1,0 +1,2398 @@
+Mortran 3.2 Tue Aug 19 16:00:00 2025
+               0  %L                                                                     ;
+1              0  %E
+               0  %I4                                                                    ;
+               0  !INDENT F2;
+               0  %C80                                                                           ;
+               0  %Q1                                                                            ;
+               0  "#############################################################################"
+               0  "                                                                             "
+               0  " EGSnrc machine dependent macro file for linux                               "
+               0  "                                                                             "
+               0  " Created by configure version 2.0 on mar 19 ago 2025 15:59:50 -03            "
+               0  "                                                                             "
+               0  " You may add your own machine dependent macros to this file,                 "
+               0  " but be carefull to not overwrite it if you re-run configure.                "
+               0  "                                                                             "
+               0  "#############################################################################"
+               0
+               0  REPLACE {$MACHINE} WITH
+               0  {,'linux',};
+               0  REPLACE {$HEN_HOUSE} WITH
+               0  {'/home/usuario/EGSnrc_CLRP/HEN_HOUSE/'};
+               0  REPLACE {$CANONICAL_SYSTEM} WITH
+               0  {'x86_64-unknown-linux-gnu'};
+               0  REPLACE {$CONFIGURATION_NAME} WITH
+               0  {'linux'};
+               0  REPLACE {$EGS_CONFIG} WITH
+               0  {'/home/usuario/EGSnrc_CLRP/HEN_HOUSE/specs/linux.conf'};
+               0
+               0  REPLACE {$CONFIG_TIME} WITH
+               0  {'2025-08-19 18:59:50 UTC'};
+               0
+               0  " System dependent stuff "
+               0  "========================================"
+               0  " Unfortunately, there appears to be no reliable way of copying files "
+               0  " under Fortran => we use a system call for this"
+               0  REPLACE {$copy_file} WITH {'cp '};
+               0
+               0  " Although one can move files using Fortran's intrinsic rename, "
+               0  " we don't know whether the user has not created additional files in "
+               0  " the temporary working directory => it is easiest to use a system call "
+               0  " to move all files from the temporary working directory to the user-code "
+               0  " directory. "
+               0  REPLACE {$move_file} WITH {'mv -f '};
+               0
+               0  " There appears to be no way of removing a directory from Fortran "
+               0  " => we use a system call for this. "
+               0  REPLACE {$remove_directory} WITH {'rm -rf '};
+               0
+               0  " The directory separator "
+               0  REPLACE {$file_sep} WITH {'/'};
+               0
+               0  REPLACE {$LONG_INT} WITH { integer*8 };
+               0  REPLACE {$SHORT_INT} WITH { integer*2 };
+               0  "$MAX_INT SET TO 2^63-1 in egsnrc.macros"
+               0  "The machine byte order"
+               0  REPLACE {$BYTE_ORDER} WITH {'1234'};
+               0  ;
+               0  REPLACE {$RECL-FACTOR} WITH {4};
+               0  ;
+               0  REPLACE {$FLUSH_UNIT(#);} WITH {call flush({P1});}
+               0  ;
+               0  " If you want your user-code to return an exit status, use the "
+               0  " following macro to terminate execution"
+               0  REPLACE {$CALL_EXIT(#);} WITH {call exit({P1});}
+               0  ;
+               0  " mortran3 gets confused by the # char => we need to pass it as an "
+               0  " argument to the macro. "
+               0  REPLACE {$HAVE_C_COMPILER(#);} WITH {{EMIT;{P1}define HAVE_C_COMPILER};}
+               0  ;
+               0  REPLACE {$HAVE_LOAD_DSO(#);} WITH {{EMIT;{P1}define HAVE_LOAD_DSO};}
+               0  ;
+               0  %C80                                                                           ;
+               0  "#############################################################################"
+               0  "                                                                             "
+               0  "  EGSnrc dosxzynrc application user macros                                   "
+               0  "  Copyright (C) 2015 National Research Council Canada                        "
+               0  "                                                                             "
+               0  "  This file is part of EGSnrc.                                               "
+               0  "                                                                             "
+               0  "  EGSnrc is free software: you can redistribute it and/or modify it under    "
+               0  "  the terms of the GNU Affero General Public License as published by the     "
+               0  "  Free Software Foundation, either version 3 of the License, or (at your     "
+               0  "  option) any later version.                                                 "
+               0  "                                                                             "
+               0  "  EGSnrc is distributed in the hope that it will be useful, but WITHOUT ANY  "
+               0  "  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS  "
+               0  "  FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for   "
+               0  "  more details.                                                              "
+               0  "                                                                             "
+               0  "  You should have received a copy of the GNU Affero General Public License   "
+               0  "  along with EGSnrc. If not, see <http://www.gnu.org/licenses/>.             "
+               0  "                                                                             "
+               0  "#############################################################################"
+               0  "                                                                             "
+               0  "  Author:          Dave Rogers, 1995                                         "
+               0  "                                                                             "
+               0  "  Contributors:    Blake Walters                                             "
+               0  "                   Charlie Ma                                                "
+               0  "                   Iwan Kawrakow                                             "
+               0  "                   Frederic Tessier                                          "
+               0  "                                                                             "
+               0  "#############################################################################"
+               0  "                                                                             "
+               0  "  The contributors named above are only those who could be identified from   "
+               0  "  this file's revision history.                                              "
+               0  "                                                                             "
+               0  "  This code was originally part of the BEAM code system for Monte Carlo      "
+               0  "  simulation of radiotherapy treatments units. It was developed at the       "
+               0  "  National Research Council of Canada as part of the OMEGA collaborative     "
+               0  "  research project with the University of Wisconsin. The system was          "
+               0  "  originally described in:                                                   "
+               0  "                                                                             "
+               0  "  BEAM: A Monte Carlo code to simulate radiotherapy treatment units,         "
+               0  "  DWO Rogers, BA Faddegon, GX Ding, C-M Ma, J Wei and TR Mackie,             "
+               0  "  Medical Physics 22, 503-524 (1995).                                        "
+               0  "                                                                             "
+               0  "  BEAM User Manual                                                           "
+               0  "  DWO Rogers, C-M Ma, B Walters, GX Ding, D Sheikh-Bagheri and G Zhang,      "
+               0  "  NRC Report PIRS-509A (rev D)                                               "
+               0  "                                                                             "
+               0  "  As well as the authors of this paper and report, Joanne Treurniet of NRC   "
+               0  "  made significant contributions to the code system, in particular the GUIs  "
+               0  "  and EGS_Windows. Mark Holmes, Brian Geiser and Paul Reckwerdt of Wisconsin "
+               0  "  played important roles in the overall OMEGA project within which the BEAM  "
+               0  "  code system was developed.                                                 "
+               0  "                                                                             "
+               0  "  There have been major upgrades in the BEAM code starting in 2000 which     "
+               0  "  have been heavily supported by Iwan Kawrakow, most notably: the port to    "
+               0  "  EGSnrc, the inclusion of history-by-history statistics and the development "
+               0  "  of the directional bremsstrahlung splitting variance reduction technique.  "
+               0  "                                                                             "
+               0  "#############################################################################"
+               0  "                                                                             "
+               0  "  These macros are for use with dosxyznrc.mortran                            "
+               0  "                                                                             "
+               0  "#############################################################################"
+               0
+               0
+               0  %C80        "use 80 columns"                                                   ;
+               0  %Q1         "Automatically close quotes at end of the line"                    ;
+               0  "*******************************************************************"
+               0  "                                                                   "
+               0  "                 dosxyz_user_macros.mortran                        "
+               0  "                                                                   "
+               0  "    These macros are for use with dosxyz.mortran                   "
+               0  "                                                                   "
+               0  "    The script will check for this file on the users area          "
+               0  "    $HOME/egs4/dosxyz and if not there, will use the version on    "
+               0  "    $OMEGA_HOME/dosxyz                                             "
+               0  "                                                                   "
+               0  "    The user can thus freely adapt the code to their situation.    "
+               0  "                                                                   "
+               0  "*******************************************************************"
+               0  "                                                                   "
+               0  "*******************************************************************"
+               0  "   These define dimensions of phantom etc in dosxyz
+               0  "*******************************************************************"
+               0  "
+               0  REPLACE {$STAT}    WITH {10}  "Number of batches to use in calcn of statistics"
+               0  "It works with $STAT = 1 but gives no stats"
+               0  REPLACE {$MXMED}   WITH {20}   "Maximum number of media
+               0  REPLACE {$MXSTACK} WITH {900000}  "Maximum particle stack size
+               0  REPLACE {$IMAX}    WITH {128} "Maximum number of x cells
+               0  REPLACE {$JMAX}    WITH {128} "Maximum number of y cells
+               0  REPLACE {$KMAX}    WITH {128} "Maximum number of z cells
+               0  REPLACE {$MAXDOSE} WITH {{COMPUTE $IMAX*$JMAX*$KMAX+1}}
+               0  "Number of dose regions, can be set to < $IMAX*$JMAX*$KMAX if "
+               0  "necessary to reduce memory requirement, +1 for outside region"
+               0  REPLACE {$MXREG}   WITH {{COMPUTE $IMAX*$JMAX*$KMAX+2}}
+               0  "Number of geometrical regions (+2 for vacuum and the surrounding region)"
+               0
+               0  "Following macro set to 1 to zero doses with error>50% in the .3ddose file
+               0  "Note that dose errors do not get zeroed
+               0  "Set to any other number to not zero these doses
+               0  REPLACE {$DOSEZERO} WITH {1};
+               0
+               0  "this is the maximum number of user-selected theta-phi combinations"
+               0  "in isource=7,8"
+               0  REPLACE {$MXANG} WITH {60000};
+               0
+               0  "default directory in which to output phase space files"
+               0  REPLACE {$DIRECTORY-FOR-PHSP} WITH {$cstring(egs_home)//$cstring(user_code)};
+               0
+               0  "Encoding of the egsphant material types"
+               0  REPLACE {$ENCODING} WITH {
+            {  0  '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'};
+               0
+               0  "*******************************************************************"
+               0  "   These macros define the null macros related to BEAM MODELS      "
+               0  "*******************************************************************"
+               0  "                                                                   "
+               0  "V>The following are the defaults for beam characterization models;
+               0  REPLACE {;COMIN/BMODEL/;} WITH {;}
+               0  REPLACE {;COMIN/SSMDIS/;} WITH {;}
+               0  ;REPLACE {$BEAMMODEL-ENFLAG4-INPUT} WITH { OUTPUT ;
+            {  0  (/ ' Beam characterization model not implemented, use source 1 - 3!'//);
+            {  0  }
+               0  ;REPLACE {$BEAMMODEL-INPUT-MESSAGE} WITH {;}
+               0  ;REPLACE {$BEAMMODEL-SOURCE4-INPUT} WITH { OUTPUT;
+            {  0  (/ ' Beam characterization model not implemented, use source 1 - 3!'//);
+            {  0  }
+               0  ;
+               0  REPLACE {;$BEAMMODEL_DATA_OUTPUT} WITH {;}
+               0  REPLACE {;$BEAMMODEL-SOURCE4-OUTPUT} WITH {;}
+               0  REPLACE {$BEAMMODEL-SOURCE4-SUMMARY} WITH {;}
+               0  REPLACE {$BEAMMODEL-SOURCE4-ENERGY} WITH {;}
+               0  REPLACE {$BEAMMODEL_SOURCE4_SAMPLING} WITH {;}
+               0  ;
+               0  "*******************************************************************"
+               0  "     macros related to LATCH bit testing for phase space sources
+               0  "*******************************************************************"
+               0  ;
+               0  "Macro to set bit {P2} in {P1}  to 0
+               0  REPLACE {$IBCLR(#,#);} WITH {IBCLR({P1},{P2});}
+               0
+               0  "Macro to set bit {P2} in {P1}  to 1
+               0  REPLACE {$IBSET(#,#);} WITH {IBSET({P1},{P2});}
+               0
+               0  "Macro to set test bit {P2} in {P1}
+               0  REPLACE {$BTEST(#,#)} WITH {BTEST({P1},{P2})}
+               0
+               0  "*******************************************************************"
+               0  "     macros to turn off correlated sampling"
+               0  "*******************************************************************"
+               0  "  These macros are the null set for those needed for correlated sampling"
+               0  "  V1.0 mark holmes 08/16/95                  "
+               0
+               0  REPLACE {$Corr_Vars} WITH {;};
+               0  REPLACE {$Corr_Reseed} WITH {;};
+               0  REPLACE {$Corr_Dump} WITH {;};
+               0
+               0  ;
+               0  "*******************************************************************"
+               0  "end of dosxyz_user_macros.mortran"
+               0  %C80                                                                           ;
+               0  "#############################################################################"
+               0  "                                                                             "
+               0  "  EGSnrc ctcreate utility                                                    "
+               0  "  Copyright (C) 2015 National Research Council Canada                        "
+               0  "                                                                             "
+               0  "  This file is part of EGSnrc.                                               "
+               0  "                                                                             "
+               0  "  EGSnrc is free software: you can redistribute it and/or modify it under    "
+               0  "  the terms of the GNU Affero General Public License as published by the     "
+               0  "  Free Software Foundation, either version 3 of the License, or (at your     "
+               0  "  option) any later version.                                                 "
+               0  "                                                                             "
+               0  "  EGSnrc is distributed in the hope that it will be useful, but WITHOUT ANY  "
+               0  "  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS  "
+               0  "  FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for   "
+               0  "  more details.                                                              "
+               0  "                                                                             "
+               0  "  You should have received a copy of the GNU Affero General Public License   "
+               0  "  along with EGSnrc. If not, see <http://www.gnu.org/licenses/>.             "
+               0  "                                                                             "
+               0  "#############################################################################"
+               0  "                                                                             "
+               0  "  Author:          Blake Walters, 1997                                       "
+               0  "                                                                             "
+               0  "  Contributors:    Dave Rogers                                               "
+               0  "                   Iwan Kawrakow                                             "
+               0  "                   Ernesto Mainegra-Hing                                     "
+               0  "                                                                             "
+               0  "#############################################################################"
+               0  "                                                                             "
+               0  "  The contributors named above are only those who could be identified from   "
+               0  "  this file's revision history.                                              "
+               0  "                                                                             "
+               0  "  This code is part of the BEAMnrc code system for Monte Carlo simulation of "
+               0  "  radiotherapy treatments units. BEAM was originally developed at the        "
+               0  "  National Research Council of Canada as part of the OMEGA collaborative     "
+               0  "  research project with the University of Wisconsin, and was originally      "
+               0  "  described in:                                                              "
+               0  "                                                                             "
+               0  "  BEAM: A Monte Carlo code to simulate radiotherapy treatment units,         "
+               0  "  DWO Rogers, BA Faddegon, GX Ding, C-M Ma, J Wei and TR Mackie,             "
+               0  "  Medical Physics 22, 503-524 (1995).                                        "
+               0  "                                                                             "
+               0  "  BEAM User Manual                                                           "
+               0  "  DWO Rogers, C-M Ma, B Walters, GX Ding, D Sheikh-Bagheri and G Zhang,      "
+               0  "  NRC Report PIRS-509A (rev D)                                               "
+               0  "                                                                             "
+               0  "  As well as the authors of this paper and report, Joanne Treurniet of NRC   "
+               0  "  made significant contributions to the code system, in particular the GUIs  "
+               0  "  and EGS_Windows. Mark Holmes, Brian Geiser and Paul Reckwerdt of Wisconsin "
+               0  "  played important roles in the overall OMEGA project within which the BEAM  "
+               0  "  code system was developed.                                                 "
+               0  "                                                                             "
+               0  "  There have been major upgrades in the BEAM code starting in 2000 which     "
+               0  "  have been heavily supported by Iwan Kawrakow, most notably: the port to    "
+               0  "  EGSnrc, the inclusion of history-by-history statistics and the development "
+               0  "  of the directional bremsstrahlung splitting variance reduction technique.  "
+               0  "                                                                             "
+               0  "#############################################################################"
+               0  "                                                                             "
+               0  "  The ctcreate utility reads in CT data supplied by the user (Currently,     "
+               0  "  ctcreate can handle three CT data formats: Pinnacle, CADPLAN and DICOM;    "
+               0  "  see description of input and manual for more details) and outputs a CT     "
+               0  "  phantom hat can be used as a direct input to dosxyznrc. The program        "
+               0  "  outputs the CT phantom in ASCII format to a .egsphant file. In this        "
+               0  "  .egsphant file, the media numbers in each voxel are output in such a way   "
+               0  "  as to allow the user to see rough slice-by-slice views of the original CT  "
+               0  "  data. The ctcreate utility also has the capability of outputting the       "
+               0  "  densities and Hounsfield numbers of the phantom in .3ddose format into a   "
+               0  "  .CTforPAW, for display using PAW. PAW can then be used to display the      "
+               0  "  phantom along with isodose contours.                                       "
+               0  "                                                                             "
+               0  "#############################################################################"
+               0  "                                                                             "
+               0  "  Modifications by Iwan Kawrakow:                                            "
+               0  "                                                                             "
+               0  "  - pass input file name (if any) via command line argument                  "
+               0  "                                                                             "
+               0  "  - new subroutine for reading Pinnacle binary data file => no need for      "
+               0  "    ReadBinaryXXXX                                                           "
+               0  "                                                                             "
+               0  "  - Handle availability of DICOM related functions via C-preprocessor        "
+               0  "    macros.                                                                  "
+               0  "                                                                             "
+               0  "  - Handle machine endianness via the $BYTE_ORDER macro that is determined   "
+               0  "    during configuration and defined in machine.macros, instead of hard      "
+               0  "    coding that e.g. Linux is little endian, etc. (wonder if someone tried   "
+               0  "    to run Linux on a Power chip).                                           "
+               0  "                                                                             "
+               0  "  - Remove use of ctcreate_macros.mortran (not necessary after the 3 changes "
+               0  "    detailed above)                                                          "
+               0  "                                                                             "
+               0  "#############################################################################"
+               0
+               0
+               0
+               0  "******************************************************************************"
+               0  %C80         "80 column mortran input"                                         ;
+               0  !INDENT M 4; "Indent 4 spaces for each nesting level in mortran listing file"
+               0  !INDENT F 4; "Indent 4 spaces for each nesting level in fortran output file"
+               0  %Q1          "Automatically close quotes at end of the line"                   ;
+               0  "The next line is 80 characters long, use it to set up the screen width
+               0  "23456789|123456789|123456789|123456789|123456789|123456789|123456789|123456789|
+               0  ;
+               0  "******************************************************************************"
+               0  "         ****************************************
+               0  "         *                                      *
+               0  "         *        ctcreate.mortran              *
+               0  "         *                                      *
+               0  "         ****************************************
+               0  "
+               0  "   DESCRIPTION OF INPUT FILE
+               0  "   =========================
+               0  "
+               0  "  CT Record 1          ctformat (A60)
+               0  "                         The format of the CT data.  Currently Pinnacle,
+               0  "                         CADPLAN and DICOM formats are handled for all
+               0  "                         architectures.
+               0  "                         AAPM format requires conversion to Pinnacle through
+               0  "                         the $OMEGA_HOME/progs/ctcreate/CT/AAPM/aapm2pinnacle
+               0  "                         code.
+               0  "
+               0  "  CT Record 2          CTFilename (up to 256 characters)
+               0  "                         For Pinnacle format:
+               0  "                          CTFilename is the full name of the .header file.
+               0  "                          Assumes that the binary CT data is stored in a file
+               0  "                          with the same prefix but with a .img extension.
+               0  "                         For CADPLAN and DICOM formats:
+               0  "                          CTFilename is the full name of a file in which is
+               0  "                          stored the full names of the CADPLAN data files
+               0  "                          that make up the full CT image (one file/slice).
+               0  "                          Files must be in order of increasing Z.
+               0  "
+               0  "  CT Record 3          xctsubmin,xctsubmax,yctsubmin,yctsubmax,zctsubmin,
+               0  "                       zctsubmax (6F10.4) (ON ONE LINE)
+               0  "
+               0  "                       xctsubmin,xctsubmax: lower and upper x boundaries (cm)
+               0  "                                            of the subset of the CT
+               0  "                                            data to be considered for the
+               0  "                                            dosxyznrc phantom.
+               0  "                       yctsubmin,yctsubmax: lower and upper y bounds (cm)
+               0  "                                            of the subset of the CT data
+               0  "                                            to be considered for the dosxyznrc
+               0  "                                            phantom.
+               0  "                       zctsubmin,zctsubmax: lower and upper z bounds (cm)
+               0  "                                            of the subset of the CT data
+               0  "                                            to be considered for the dosxyznrc
+               0  "                                            phantom.
+               0  "
+               0  "                          If all are set to 0, then the entire CT volume
+               0  "                          is selected.  If, in any dimension, the lower
+               0  "                          bound is >= the upper bound, then the entire
+               0  "                          thickness in that dimension will be used.  Finally,
+               0  "                          note that the subvolume is always expanded to
+               0  "                          include an integer number of CT voxels.
+               0  "
+               0  "  CT Record 4          xyz_xthickness,xyz_ythickness,xyz_zthickness (3F15.0);
+               0  "                       The x, y and z voxel dimensions (cm) to be used
+               0  "                       for the dosxyznrc phantom.  Restrictions:
+               0  "                          (xctsubmax-xctsubmin)/$IMAX<=xyz_xthickness<=
+               0  "                                                      (xctsubmax-xctsubmin)
+               0  "                          (yctsubmax-yctsubmin)/$JMAX<=xyz_ythickness<=
+               0  "                                                      (yctsubmax-yctsubmin)
+               0  "                          (zctsubmax-zctsubmin)/$KMAX<=xyz_zthickness<=
+               0  "                                                      (zctsubmax-zctsubmin)
+               0  "
+               0  "                         Note that voxel dimensions are always increased to
+               0  "                         fit an integer number of dosxyznrc voxels on the CT
+               0  "                         sub-volume selected.
+               0  "
+               0  "  CT Record 5          num_material, material_ct_lower_bound (2I10)
+               0  "                       num_material: This is the number of materials and ramps
+               0  "                                     that are to be read from the file.
+               0  "                       material_ct_lower_bound: lower CT no. for the first
+               0  "                                                medium in the ramp.
+               0  "
+               0  "                       If this input is 0,0 then the default CT ramp is used.
+               0  "                       See subroutine CTToMedium for a description of the
+               0  "                       default ramp.
+               0  "
+               0  "                       If the default ramp is not used then the format for
+               0  "                       user input of the materials and ramps
+               0  "                       is shown in CT Records 6.a and 6.b.  These line pairs
+               0  "                       are repeated num_material times.
+               0  "
+               0  "  Repeat 6.a and 6.b for i=1 to num_material (only used if num_material > 0).
+               0  "
+               0  "  CT Record 6.a        material_name (24A1)
+               0  "                       The PEGS4 name of material i.
+               0  "
+               0  "  CT Record 6.b        material_ct_upper_bound(i),
+               0  "                       material_density_lower_bound(i),
+               0  "                       material_density_upper_bound(i) (I5,2F15.0)
+               0  "                       (all on one line)
+               0  "
+               0  "                       material_ct_upper_bound(i): max CT no. for material i
+               0  "                       material_density_lower_bound(i): min density for
+               0  "                                                        material i (g/cm^3)
+               0  "                       material_density_upper_bound(i): max density for
+               0  "                                                        material i (g/cm^3)
+               0  "
+               0  ;
+               0
+               0  REPLACE {$INTEGER} WITH {integer}
+               0  REPLACE {$CTUnitNumber} WITH {45} "assign a unit number for the CT data"
+               0  REPLACE {$CTIMAX} WITH {512}
+               0  REPLACE {$CTJMAX} WITH {512}
+               0  REPLACE {$CTKMAX} WITH {270}
+               0  "The above define the largest CT data set we can read in"
+               0  "You can make the code require much less space by reducing to your"
+               0  "              local maximum needs"
+               0  "$IMAX, $JMAX and $KMAX defined in dosxyznrc_user_macros.mortran"
+               0  "              define the number of the phantom/calculational voxels"
+               0
+               0  "Generalized output to units 6 and 1
+               0  REPLACE {OUTPUT61#;#;} WITH {
+            {  0  {SETR A =@LG}
+            {  0  write(6,{COPY A}){P1};write(1,{COPY A}){P1};{COPY A}format{P2};
+            {  0  }
+               0
+               0  ;IMPLICIT NONE;
+               0
+               0  Character*60 ctformat;                 "format of CT data"
+               0  Character*40 machine;                  "type of machine being run on"
+               0
+               0  Character*256 CTFileName;              "main CT file name"
+               0
+               0  Integer      nmed;                  "Number of media"
+               0  Character*4  media(24,$MXMED);      "Media names"
+               0  Real    rhor($MXREG);               "Density distribution"
+               0  Integer med($MXREG);                "Media distribution"
+               0  Real    xbound($IMAX+1);            "Voxel X bounds for dosxyznrc"
+               0  Real    ybound($JMAX+1);            "Voxel Y bounds for dosxyznrc"
+               0  Real    zbound($KMAX+1);            "Voxel Z bounds for dosxyznrc"
+               0
+               0  "CT Data Variables."
+               0  Integer CTArraySize(3);                "Size of CT array"
+               0  Real    CTVoxelSize(3);                "Original CT voxel size"
+               0  Real    CTOffset(3);                   "The posn of the (1,1,1) voxel's corner"
+               0  Integer*2 CTHounsData($CTIMAX,$CTJMAX,$CTKMAX); "The original CT data   "
+               0  Integer*2 CTResizeData($IMAX,$JMAX,$KMAX);      "The resampled CT data  "
+               0  Integer CTErrorCode;                   "Error code for CT"
+               0  Integer imax,jmax,kmax;                "Max indices for resized CT data"
+               0  Integer lnblnk1,l;                     "have to declare this for implicit none"
+               0  integer iargc,narg;
+               0  character input_file*256;
+               0  logical unknown_format,file_exists;
+               0
+               0  $HAVE_C_COMPILER(#);
+               0
+               0  narg = iargc();
+               0  #if defined HAVE_C_COMPILER
+               0  #define WITH_DICOM
+               0  #endif
+               0
+               0  IF( narg > 0 ) [
+               1      call getarg(1,input_file);
+               1      inquire(file=input_file,exist=file_exists);
+               1      IF( ~file_exists ) [
+               2          write(6,'(/a,a,a/)') 'File ',input_file(:lnblnk1(input_file)),
+               2          ' does not exist';
+               2          $CALL_EXIT(1);
+               2          ]
+               1      open(5,file=input_file);
+               1      open(1,file=input_file(:lnblnk1(input_file))//'.ctlst');
+               1      ]
+               0  ELSE [
+               1      write(6,'(/a/)') 'No input file -> all input to come from the terminal';
+               1      open(1,file='interactiv.ctlst');
+               1      ]
+               0
+               0  OUTPUT61; ('=============================================================');
+               0  OUTPUT61; (' Running ctcreate');
+               0  OUTPUT61; ('=============================================================');
+               0
+               0  "determine what format the CT data is in"
+               0  OUTPUT61; (//' ************************************************************'/
+               0  ' '/
+               0  '           CT formats currently supported:'/
+               0  '           ------------------------------ '/
+               0  ' '/
+               0  '           1. Pinnacle                    '/
+               0  '           2. CADPLAN                     ');
+               0  #ifdef WITH_DICOM;
+               0  OUTPUT61;  ( '           3. DICOM                       ');
+               0  #endif;
+               0  OUTPUT61; (//' ************************************************************');
+               0  OUTPUT61; (//' Input the format of your CT data'/ ' : ',$);
+               0  read(5,'(A60)') ctformat;
+               0  OUTPUT61 ctformat(:lnblnk1(ctformat));(A60);
+               0  unknown_format = .true.;
+               0  IF(ctformat='pinnacle'|ctformat='PINNACLE'|ctformat='Pinnacle')[
+               1      ctformat='Pinnacle'; unknown_format = .false.;
+               1      ]
+               0  ELSEIF(ctformat='cadplan'|ctformat='Cadplan'|ctformat='CadPlan'|
+               0  ctformat='CADPLAN')[
+               1      ctformat='CADPLAN'; unknown_format = .false.;
+               1      ]
+               0  ELSEIF(ctformat='aapm'| ctformat='AAPM')[
+               1      OUTPUT61; (//' Convert CT data from AAPM format to Pinnacle format using'/
+               1      ' $OMEGA_HOME/dosxyznrc/CT/aapm2pinnacle.'//);
+               1      $CALL_EXIT(1);
+               1      ]
+               0
+               0  #ifdef WITH_DICOM;
+               0  IF(ctformat='dicom'|ctformat='Dicom'|ctformat='DICOM'|ctformat='3')[
+               1      ctformat='DICOM'; unknown_format = .false.;
+               1      ]
+               0  #else;
+               0  IF(ctformat='dicom'|ctformat='Dicom'|ctformat='DICOM'|ctformat='3')[
+               1      OUTPUT;
+               1      (//' The DICOM routines are written in C. You need a working'/
+               1      ' C compiler to use them'//);
+               1      $CALL_EXIT(1);
+               1      ]
+               0  #endif;
+               0
+               0  IF( unknown_format ) [
+               1      OUTPUT ctformat;(//' CT data format ',a,' not currently handled.'//);
+               1      $CALL_EXIT(1);
+               1      ]
+               0
+               0  "  Read in the header filename from the egsinp file. "
+               0  IF(ctformat='Pinnacle')[
+               1      OUTPUT61; (//' Input the full name of the header file for the CT data'/
+               1      ' : ',$);
+               1      ]
+               0  ELSEIF(ctformat='CADPLAN')[
+               1      OUTPUT61; (//' Input the full name of the file of CT data file names'/
+               1      ' : ',$);
+               1      ]
+               0  ELSEIF(ctformat='DICOM')[
+               1      OUTPUT61; (//' Input the full name of the file of DICOM file names'/
+               1      ' : ',$);
+               1      ]
+               0  read(5,'(A256)') CTFilename;
+               0  l = lnblnk1(CTFilename);
+               0  OUTPUT61 CTFilename(:l); (A);
+               0  " Call ReadCT to get original ct volume.              "
+               0
+               0
+               0  "==========================================================="
+               0  "  Input the CT data using various format types"
+               0  "==========================================================="
+               0
+               0  IF(ctformat='Pinnacle')[
+               1      Call ReadCT_Pinnacle(CTFileName, CTArraySize, CTHounsData,
+               1      CTOffset, CTVoxelSize,CTErrorCode);
+               1      ]
+               0  "==========================================================="
+               0
+               0  ELSEIF(ctformat='CADPLAN')[
+               1      Call ReadCT_CADPLAN(CTFileName, CTArraySize, CTHounsData,
+               1      CTOffset, CTVoxelSize,CTErrorCode);
+               1      ]
+               0  "==========================================================="
+               0  #ifdef WITH_DICOM;
+               0  IF(ctformat='DICOM')[
+               1      CTFilename(l+1:l+1) = char(0);
+               1      Call ReadCT_DICOM(CTFileName, CTArraySize, CTHounsData,
+               1      CTOffset, CTVoxelSize,CTErrorCode);
+               1      ]
+               0  #endif;
+               0
+               0  "check to see if CT array is too big to handle"
+               0  IF(CTArraySize(1)>$CTIMAX | CTArraySize(2)>$CTJMAX |
+               0  CTArraySize(3)>$CTKMAX)[
+               1      OUTPUT CTArraySize(1),CTArraySize(2),CTArraySize(3),
+               1      $CTIMAX,$CTJMAX,$CTKMAX;
+               1      (//' ***ERROR:'/
+               1      ' CT data array is ',I4,'x',I4,'x',I4/
+               1      ' Max. ctcreate can deal with is ',I4,'x',I4,'x',I4/
+               1      ' Go into ctcreate and change $CTIMAX,$CTJMAX,$CTKMAX to deal'/
+               1      ' with the size of the CT data array, recompile and try again.'//);
+               1      STOP;
+               1      ]
+               0
+               0  "==========================================================="
+               0  "  add another ELSEIF block for your format"
+               0  "  and then send us the routine so we can make it available"
+               0  "==========================================================="
+               0
+               0  " Call subsizeCT to get subset of CT volume."
+               0
+               0  Call SubsizeCT(CTArraySize,CTHounsData,CTVoxelSize,CTOffset);
+               0
+               0  "===================================================================="
+               0  imax=$IMAX; " Temporary, this will be reset in ResampleCT"
+               0  jmax=$JMAX;
+               0  kmax=$KMAX;
+               0
+               0  " Resample data based on user input for phantom voxels           "
+               0  "               note there is user input within the routine"
+               0
+               0  Call ResampleCT(CTArraySize(1),CTArraySize(2),CTArraySize(3),
+               0  CTVoxelSize(1),CTVoxelSize(2),CTVoxelSize(3),
+               0  CTHounsData,
+               0  imax,jmax,kmax,
+               0  xbound,ybound,zbound,
+               0  CTResizeData,
+               0  CTOffset);
+               0  "===================================================================="
+               0
+               0  "Convert the CT data to arrays of MED and RHOR values for each voxel"
+               0
+               0  Call CTToMedium(imax,jmax,kmax,         "input array dimensions"
+               0  CTResizeData,       "input CT data"
+               0  nmed,               "output number of media"
+               0  med,                "output media array"
+               0  rhor,               "output densities"
+               0  media);              "output names of media"
+               0
+               0
+               0  "===================================================================="
+               0
+               0  "output CT data that can be read by PAW for display"
+               0  "comment this out if you do not use PAW"
+               0  "the output file for PAW is CTFileName.CTforPAW"
+               0
+               0  "call write_material(CTFileName,imax,jmax,kmax,
+               0  "                    xbound,ybound,zbound,
+               0  "                    rhor,med,CTResizeData,ctformat);
+               0
+               0  "===================================================================="
+               0
+               0  "now output the CT phantom in a form that can be read by dosxyznrc"
+               0  "the phantom will be in file, CTFileName.egsphant"
+               0  "Note: estepe is no longer passed
+               0  Call write_phantom(CTFileName,nmed,media,
+               0  imax,jmax,kmax,xbound,ybound,zbound,
+               0  rhor,med,ctformat);
+               0  "===================================================================="
+               0
+               0  Close(1); "output listing"
+               0  End;
+               0
+               0
+1              0  %E    "ctcreate.mortran - start of subroutine ReadCT_Pinnacle"
+               0  "******************************************************************************
+               0  "
+               0  Subroutine ReadCT_Pinnacle(fname,asize,ctdata,offset,vsize,error);
+               0  "
+               0  "
+               0  " This subroutine reads in the CT data set in to the array ctdata. In       "
+               0  "  addition, the fundamental description of the CT volume is loaded from the"
+               0  "  header file and passed back to CreateCTPhantom.                          "
+               0  "
+               0  " Essential data returned by ReadCT:
+               0  "
+               0  " 1) The number of CT voxels in x,y,z directions (asize(1),asize(2),
+               0  "    asize(3))
+               0  " 2) The dimensions of the CT voxels in the x,y,z directions (vsize(1),
+               0  "    vsize(2),vsize(3))
+               0  " 3) The lower bounds of the CT data in the x,y,z directions in cm
+               0  "    (offset(1),offset(2),offset(3))
+               0  " 4) The CT data (Hounsfield numbers) as defined in a right-handed cartesian
+               0  "    coordinate system x,y,z (similar to that used by dosxyznrc) dumped into
+               0  "    a 3-D array of integers, ctdata(i,j,k), with x<-->i,y<-->j,z<-->k,
+               0  "    where ctdata(i,j,k) is equal to the hounsfield number in the voxel with
+               0  "    lower bounds x=offset(1)+(i-1)*vsize(1),y=offset(2)+(j-1)*vsize(2),
+               0  "    z=offset(3)+(k-1)*vsize(3) and upper bounds x=offset(1)+i*vsize(1),
+               0  "    y=offset(2)+j*vsize(2),z=offset(3)+k*vsize(3).
+               0  ;IMPLICIT NONE;
+               0  Character*256 fname;      "The name of CT header file.                "
+               0  Character*256 vname;      "The name of the variable to search for in  "
+               0  " the header file.                          "
+               0  Character*256 ctname;     "Name of the CT data file.                  "
+               0  Character*40  machine;    "Name of the machine being run on           "
+               0  Integer       asize(3);   "The size of the array for                  "
+               0  " CT data set.                              "
+               0  Real          vsize(3);   "The size of the voxels in the CT volume.   "
+               0  Real          offset(3);  "The offset distance of the voxels in the CT"
+               0  " data set. This identifies the position in "
+               0  " space of the lowest bound of the CT       "
+               0  " voxels.                                   "
+               0  Integer       i,j,k;      "misc. indices                              "
+               0  Integer       error;      "Not used.                                  "
+               0  Integer*2     ctdata($CTIMAX,$CTJMAX,$CTKMAX); "The CT data set.      "
+               0  Integer*2     dummy;      "Temporary variable.                        "
+               0  Integer       byteorder;  "The order of the bytes in the CT data file."
+               0  Integer       maxctnum;   "The upper limit of the CT data.  This could"
+               0  "be read in from the .header file, but is   "
+               0  "hard-coded as 2000  "
+               0  "maxctnum is used to determine if swapping "
+               0  "is necessary if byte order is not given   "
+               0  "in the header file.                       "
+               0  "data set that are above maxctnum.         "
+               0  Integer       maxcount; "no. of pixels with CT number >  upper limit "
+               0  Integer       outofrange; "set to 1 if CT number > upper limit       "
+               0  Real ReadReal,ReadInt;
+               0  Integer lnblnk1;
+               0
+               0  OUTPUT61; ('=============================================================');
+               0  OUTPUT61; (' CT Phantom has been chosen and reading  ');
+               0  OUTPUT61; (' headerfile information.                ');
+               0  "Read in the header information using the header reading subroutines. "
+               0  vname='x_dim';    asize(1)=Int(ReadInt(fname,vname));
+               0  vname='y_dim';    asize(2)=Int(ReadInt(fname,vname));
+               0  vname='z_dim';    asize(3)=Int(ReadInt(fname,vname));
+               0  vname='x_pixdim'; vsize(1)=ReadReal(fname,vname);
+               0  vname='y_pixdim'; vsize(2)=ReadReal(fname,vname);
+               0  vname='z_pixdim'; vsize(3)=ReadReal(fname,vname);
+               0  vname='x_start';  offset(1)=ReadReal(fname,vname);
+               0  vname='y_start';  offset(2)=ReadReal(fname,vname);
+               0  vname='z_start';  offset(3)=ReadReal(fname,vname);
+               0  " Echo these values to the screen. "
+               0  OUTPUT61 fname(:lnblnk1(fname));
+               0  (' Header File Name ->   ',A);
+               0  OUTPUT61 asize(1); (' X Pixel Number   ->   ',I4);
+               0  OUTPUT61 asize(2); (' Y Pixel Number   ->   ',I4);
+               0  OUTPUT61 asize(3); (' Z Pixel Number   ->   ',I4);
+               0  OUTPUT61 vsize(1); (' X Pixel Size     ->   ',F8.3,' (cm)');
+               0  OUTPUT61 vsize(2); (' Y Pixel Size     ->   ',F8.3,' (cm)');
+               0  OUTPUT61 vsize(3); (' Z Pixel Size     ->   ',F8.3,' (cm)');
+               0  OUTPUT61 offset(1); (' X Pixel Offset   ->   ',F8.3,' (cm)');
+               0  OUTPUT61 offset(2); (' Y Pixel Offset   ->   ',F8.3,' (cm)');
+               0  OUTPUT61 offset(3); (' Z Pixel Offset   ->   ',F8.3,' (cm)');
+               0
+               0  maxctnum=2000; "I guess this could be read from header--BW"
+               0
+               0  IF (asize(1)>$CTIMAX | asize(2)>$CTJMAX | asize(3)>$CTKMAX ) [;
+               1      OUTPUT61; (' ERROR -> The CT volume is larger than  ');
+               1      OUTPUT61; ('the compiled code can handle. Please   ');
+               1      OUTPUT61; ('adjust the array sizes and try again.');
+               1      OUTPUT61; ('  Thanks! ');
+               1      $CALL_EXIT(1);
+               1      ]
+               0
+               0  OUTPUT61 offset(1),offset(1)+asize(1)*vsize(1),
+               0  offset(2),offset(2)+asize(2)*vsize(2),
+               0  offset(3),offset(3)+asize(3)*vsize(3);
+               0  (/' CT data goes from  x = ',F12.5,' - ',F12.5,' cm'/
+               0  '                    y = ',F12.5,' - ',F12.5,' cm'/
+               0  '                    z = ',F12.5,' - ',F12.5,' cm'/);
+               0
+               0  "Read in the ct volume."
+               0  OUTPUT61; ('--------------------------------------------');
+               0  ctname=fname(:index(fname,'header')-1) // 'img';
+               0  OUTPUT61; (' Reading in the CT data from the image file.');
+               0  OUTPUT61 ctname(:lnblnk1(ctname)); (A);
+               0
+               0  call read_ct_data(ctdata,asize(1),asize(2),asize(3),ctname);
+               0
+               0  OUTPUT61; (' Done reading in the image file data.');
+               0
+               0  "Determine if the order of the bytes in the CT data"
+               0  " are wrong and correct them if they are incorrect."
+               0  vname='byte_order'; byteorder=Int(ReadInt(fname,vname));
+               0  OUTPUT61; ('--------------------------------------------');
+               0  OUTPUT61; (' Determining if data needs to be byte       ');
+               0  OUTPUT61; (' swapped.');
+               0  IF (vname.eq.'Error') [ "No Byte order in the file."
+               1      "So try to figure it out.  "
+               1      " Use the vol_max to test the limits of the CTData numbers."
+               1      ;
+               1      OUTPUT61; (' No byte order given in header file.        ');
+               1      "Use Hounsfield range to detect byte order."
+               1      "Ie. if any values are greater than 2000   "
+               1      "then do byte swap.                        "
+               1      OUTPUT61; (' Will compare Hounsfield data against the');
+               1      OUTPUT61; (' Hounsfield maximum value - 2000. ');
+               1      " Compare the numbers in CTdata to the max in volume."
+               1      outofrange=0;
+               1      DO i=1,asize(1) [
+               2          DO j=1,asize(2) [
+               3              DO k=1,asize(3) [
+               4                  IF(maxctnum.lt.ctdata(i,j,k)) [
+               5                      outofrange=1;
+               5                      OUTPUT61; (' Data values excede the maximum indicated in');
+               5                      OUTPUT61; (' header file.');
+               5                      goto 1007;
+               5                      ];
+               4                  ];
+               3              ];
+               2          ];
+               1      1007    Continue;
+               1      ]
+               0  ELSE [
+               1      IF( ( byteorder = 0 & $BYTE_ORDER = '1234' ) |
+               1      ( byteorder = 1 & $BYTE_ORDER = '4321' ) ) [
+               2          outofrange=0;
+               2          OUTPUT61 byteorder,$BYTE_ORDER;
+               2          (' Byte order of file (',i1,
+               2          ') is same as byte order of this machine ',a4);
+               2          ] ELSE [
+               2          OUTPUT61 byteorder,$BYTE_ORDER;
+               2          (' Byte order of file (',i1,
+               2          ') is different from byte order of this machine ',a4);
+               2          OUTPUT61; ('---> will swap bytes');
+               2          outofrange=1;
+               2          ]
+               1      ]
+               0  " Do the byte swap now IF needed."
+               0  IF (outofrange.ne.0) [
+               1      OUTPUT61; ('============================================');
+               1      OUTPUT61; (' Swapping the bytes in the CT data set.');
+               1      DO i=1,asize(1) [
+               2          DO j=1,asize(2) [
+               3              DO k=1,asize(3) [
+               4                  dummy=ctdata(i,j,k);
+               4                  Call swapbytes2(dummy);
+               4                  ctdata(i,j,k)=dummy;
+               4                  ];
+               3              ];
+               2          ];
+               1      ]
+               0  ELSE [
+               1      OUTPUT61; (' No Byte swap necessary, continuing.        ');
+               1      ];
+               0  "check data range"
+               0  maxcount=0;
+               0  DO i=1,asize(1) [
+               1      DO j=1,asize(2) [
+               2          DO k=1,asize(3) [
+               3              IF(ctdata(i,j,k)>maxctnum)[ maxcount=maxcount+1;]
+               3              ]
+               2          ]
+               1      ]
+               0
+               0  IF(maxcount>0)[
+               1      OUTPUT61 maxcount,maxctnum;
+               1      (' Warning: ',I10,' pixels had Pinnacle CT no. > the maximum value of ',I10/
+               1      ' supported by Pinnacle format (or indicated in header).'/);
+               1      ]
+               0  OUTPUT61; ('============================================');
+               0  END;
+               0  ;
+               0
+1              0  %E    "ctcreate.mortran - start Function ReadReal -part of ReadCT_Pinnacle"
+               0  "******************************************************************************
+               0  "-----Function-ReadReal-----------------------------------------------------"
+               0  Function ReadReal(filename,vname);
+               0  " Extracts the requested real value from the Pinnacle CT header file and    "
+               0  " returns it to the caller. If the variable name is not found in the header "
+               0  " file, then it returns a value of 0.0 for the value and Error for the      "
+               0  " variable name.                                                            "
+               0  "---------------------------------------------------------------------------"
+               0  ;IMPLICIT NONE;
+               0  Character*256 filename;    "The name of the header file.              "
+               0  Character*256 vname;       "The name of the variable being extracted. "
+               0  Character*256 dummy;       "Used to read in each line of the header   "
+               0  " file.                                    "
+               0  Real          readreal;    "The real value, as read by the subroutine."
+               0  Integer       istat;       "Status flag.                              "
+               0  Integer       iindex;      "Integer index for clipping string excess. "
+               0  Integer       ivname;      "Length of variable name string.           "
+               0  Integer       idummy;      "Length of dummy string.                   "
+               0  Integer       lnblnk1;
+               0  "---------------------------------------------------------------------------"
+               0  Open($CTUnitNumber,file=filename,status='old',access='sequential');
+               0  1000  Read($CTUnitNumber,IOSTAT=istat,ERR=1001,FMT='(A256)') dummy;
+               0  IF (dummy(:1).eq.'!') [goto 1000;]; "Skip Comments"
+               0  dummy=dummy(:lnblnk1(dummy)-1);
+               0  ivname=lnblnk1(vname);
+               0  idummy=lnblnk1(dummy);
+               0  iindex=Index(dummy(:idummy),vname(:ivname));
+               0  IF(iindex.EQ.0) [goto 1000;];
+               0
+               0  CLOSE($CTUnitNumber,status='keep');
+               0
+               0  iindex=iindex+ivname+1;
+               0  dummy=dummy(iindex+1:);
+               0  "Strip off leading equals and colons."
+               0  IF (Index(dummy,'=').NE.0) [
+               1      iindex=Index(dummy,'=')+1;
+               1      dummy=dummy(iindex+1:);
+               1      ];
+               0  IF (Index(dummy,':').NE.0) [
+               1      iindex=Index(dummy,':')+1;
+               1      dummy=dummy(iindex+1:);
+               1      ];
+               0  "Read the number from the remaining string."
+               0  Read(dummy,fmt='(f10.3)') readreal;
+               0  vname='Okay';
+               0  Return;
+               0  1001  CONTINUE;
+               0  OUTPUT61; (' An error occurred while searching for :');
+               0  OUTPUT61 vname;
+               0  (' > ',A);
+               0  OUTPUT61; (' in:');
+               0  OUTPUT61 filename;
+               0  (' > ',A,'.');
+               0  OUTPUT61; (' Probably End Of File.');
+               0  IF (istat.gt.0) [ goto 1000;];
+               0  ReadReal=0.00;
+               0  CLOSE($CTUnitNumber,status='keep');
+               0  vname='Error';
+               0  return;
+               0  End;
+               0
+               0
+1              0  %E    "ctcreate.mortran - start Function-ReadInt -part of ReadCT_Pinnacle"
+               0  "******************************************************************************
+               0  "
+               0  "-----Function-ReadInt------------------------------------------------------"
+               0  "     This one is a bit weird for now, the function is sup- "
+               0  "     posed to be an integer, but the compiler (MS) kept   "
+               0  "     claiming that this was a miss-match. So it is func-  "
+               0  "     tional, but looks bad.                               "
+               0  "
+               0  Function ReadInt(filename,vname);
+               0  "
+               0  " Extracts the requested integer value from the Pinnacle CT header file and "
+               0  " returns to the caller. If the variable name is not found in the header    "
+               0  " file, then it returns a value of 0.0 for the value and Error for the      "
+               0  " variable name.                                                            "
+               0  "---------------------------------------------------------------------------"
+               0  ;IMPLICIT NONE;
+               0  Character*256 filename;
+               0  Character*256 vname;
+               0  Character*256 dummy;
+               0  Real          readint;
+               0  Integer       istat;
+               0  Integer       iindex;
+               0  Integer       ivname;
+               0  Integer       idummy;
+               0  Integer       lnblnk1;
+               0  "---------------------------------------------------------------------------"
+               0  Open($CTUnitNumber,file=filename,status='old',access='sequential');
+               0  1000  CONTINUE;
+               0  Read($CTUnitNumber,IOSTAT=istat,ERR=1001,FMT='(A256)') dummy;
+               0  IF (dummy(:1).eq.'!') [goto 1000;];
+               0  dummy=dummy(:lnblnk1(dummy)-1);
+               0  ivname=lnblnk1(vname);
+               0  idummy=lnblnk1(dummy);
+               0  iindex=Index(dummy(:idummy),vname(:ivname));
+               0  IF(iindex.EQ.0) [goto 1000;];
+               0
+               0  CLOSE($CTUnitNumber,status='keep');
+               0
+               0  iindex=iindex+ivname+1;
+               0  dummy=dummy(iindex+1:);
+               0  "Strip off leading equals and colons."
+               0  IF (Index(dummy,'=').NE.0) [
+               1      iindex=Index(dummy,'=')+1;
+               1      dummy=dummy(iindex+1:);
+               1      ];
+               0  IF (Index(dummy,':').NE.0) [
+               1      iindex=Index(dummy,':')+1;
+               1      dummy=dummy(iindex+1:);
+               1      ];
+               0  Read(dummy,fmt='(i10)') idummy;
+               0  ReadInt=idummy;
+               0  vname='Okay';
+               0  Return;
+               0  1001  Continue;
+               0  OUTPUT61; (' An error occurred while searching for ');
+               0  dummy=vname(:lnblnk1(vname));
+               0  OUTPUT61  dummy;
+               0  (' > ',A);
+               0  OUTPUT61; (' in:');
+               0  dummy=filename(:lnblnk1(filename));
+               0  OUTPUT61  dummy;
+               0  (' > ',A,'.');
+               0  OUTPUT61; (' Probably End Of File.');
+               0  IF (istat.gt.0) [goto 1000;];
+               0  ReadInt=0.00;
+               0  Close($CTUnitNumber,status='keep');
+               0  vname='Error';
+               0  return;
+               0  End;
+               0
+1              0  %E    "ctcreate.mortran - start subroutine-ReadChar -part of ReadCT_Pinnacle"
+               0  "******************************************************************************
+               0  Subroutine ReadChar(filename,vname,result);
+               0  " Extracts the requested char value from the Pinnacle CT header file and    "
+               0  " returns it to the caller. If the variable name is not found in the header "
+               0  " file, then it returns a value of Error for the string and Error for the   "
+               0  " variable  name.                                                           "
+               0  "---------------------------------------------------------------------------"
+               0  ;IMPLICIT NONE;
+               0  Character*256 filename;
+               0  Character*256 vname;
+               0  Character*256 dummy;
+               0  Character*256 result;
+               0  Integer       istat;
+               0  Integer       iindex;
+               0  Integer       ivname;
+               0  Integer       idummy;
+               0  Integer       lnblnk1;
+               0  "---------------------------------------------------------------------------"
+               0  Open($CTUnitNumber,file=filename,status='old',access='sequential');
+               0  1000  CONTINUE;
+               0  Read($CTUnitNumber,IOSTAT=istat,Err=1001,FMT='(A256)') dummy;
+               0  "This line allows comments to be ignored."
+               0  IF (dummy(:1).eq.'!') [goto 1000;];
+               0  ivname=lnblnk1(vname);
+               0  idummy=lnblnk1(dummy);
+               0  iindex=Index(dummy(:idummy),vname(:ivname));
+               0  IF(iindex.EQ.0) [goto 1000;];
+               0  Close($CTUnitNumber,status='keep');
+               0  iindex=iindex+ivname+1;
+               0  IF (Index(dummy(iindex:),'=').NE.0) [
+               1      iindex=iindex+Index(dummy(iindex:),'=')+1;
+               1      ];
+               0  Read(dummy(iindex:),fmt='(A256)') result;
+               0  vname='Okay';
+               0  RETURN;
+               0  1001  CONTINUE;
+               0  OUTPUT61; (' An error occurred while searching for:');
+               0  OUTPUT61  vname;
+               0  (' > ',A);
+               0  OUTPUT61; (' in:' );
+               0  OUTPUT61  filename;
+               0  (' > ',A,'.');
+               0  OUTPUT61; (' Probaly End Of File.');
+               0  IF (istat.gt.0) [goto 1000;];
+               0  result='0';
+               0  Close($CTUnitNumber,status='keep');
+               0  vname='Error';
+               0  return;
+               0  End;
+               0
+1              0  %E    "ctcreate.mortran - start subroutine swapBytes2-part of ReadCT_Pinnacle"
+               0  "******************************************************************************
+               0  "
+               0  Subroutine swapbytes2(i);
+               0  "
+               0  "     This subroutine will change little endian to big end-"
+               0  "      ian and vice-versa. It is sensitive (on the Sparcs  "
+               0  "      at least) to the type of integer being used. That is"
+               0  "      why there are two versions of this subroutine.      "
+               0  "---------------------------------------------------------------------------"
+               0  ;IMPLICIT NONE;
+               0  Integer*2 i,ii;
+               0  Integer   dummy1,dummy2;
+               0  "---------------------------------------------------------------------------"
+               0  ii=0;
+               0  dummy1=i;
+               0  dummy2=ii;
+               0  call mvbits(dummy1, 0, 8, dummy2, 8);
+               0  call mvbits(dummy1, 8, 8, dummy2, 0);
+               0  i=dummy2;
+               0  End;
+               0
+1              0  %E    "ctcreate.mortran - start Subroutine ReadBinarySun -in ReadCT_Pinnacle"
+               0  "******************************************************************************
+               0  "
+               0  subroutine read_ct_data(ctdata,imax,jmax,kmax,ctname);
+               0  "
+               0  " Reads the CT data from the binary Pinnacle CT data file.         "
+               0  " Written for SUN SPARCS and is also used for Linux and RS6000."
+               0  "---------------------------------------------------------------------------"
+               0  ;IMPLICIT NONE;
+               0  Integer*2 ctdata($CTIMAX,$CTJMAX,$CTKMAX);
+               0  Integer   imax;
+               0  Integer   jmax;
+               0  Integer   kmax;
+               0  Integer   i,j,k,irl;
+               0  Character*256 ctname;
+               0  integer*2 i2_array(imax);
+               0  integer   rec_length;
+               0  "---------------------------------------------------------------------------"
+               0
+               0
+               0
+               0
+               0
+               0
+               0
+               0
+               0
+               0  rec_length = $RECL-FACTOR*imax/2;
+               0  open($CTUnitNumber,file=ctname,Status='old',Form='unformatted',
+               0  Access='direct',recl=rec_length);
+               0  DO j=1,jmax [
+               1      DO k=1,kmax [
+               2          irl = j + (k-1)*jmax;
+               2          read($CTUnitNumber,rec=irl) i2_array;
+               2          DO i=1,imax [ ctdata(i,j,k) = i2_array(i); ]
+               2          ]
+               1      ]
+               0  close($CTUnitNumber);
+               0  End;
+               0
+1              0  %E    "ctcreate.mortran - start of subroutine ReadCT_CADPLAN"
+               0  "******************************************************************************
+               0  "
+               0  Subroutine ReadCT_CADPLAN(fname,asize,ctdata,offset,vsize,error);
+               0  "
+               0  "
+               0  " This subroutine reads in the CT data set in to the array ctdata. In       "
+               0  "  addition, the fundamental description of the CT volume is loaded from the"
+               0  "  header file and passed back to CreateCTPhantom.                          "
+               0
+               0  "***************************************************************************"
+               0  " This routine has been completely reworked at NRC, but is based on a code  "
+               0  " provided by Marc Lauterbach in Germany.  "
+               0  "                                                                           "
+               0  " Corrected on 09-12-97 by Marc Lauterbach et al to read negative slice     "
+               0  " positions.                                                                "
+               0  "***************************************************************************"
+               0  "
+               0  " Essential data returned by ReadCT:
+               0  "
+               0  " 1) The number of CT voxels in x,y,z directions (asize(1),asize(2),
+               0  "    asize(3))
+               0  " 2) The dimensions of the CT voxels in the x,y,z directions (vsize(1),
+               0  "    vsize(2),vsize(3))
+               0  " 3) The lower bounds of the CT data in the x,y,z directions in cm
+               0  "    (offset(1),offset(2),offset(3))
+               0  " 4) The CT data (Hounsfield numbers) as defined in a right-handed cartesian
+               0  "    coordinate system x,y,z (similar to that used by dosxyznrc) dumped into
+               0  "    a 3-D array of integers, ctdata(i,j,k), with x<-->i,y<-->j,z<-->k,
+               0  "    where ctdata(i,j,k) is equal to the hounsfield number in the voxel with
+               0  "    lower bounds x=offset(1)+(i-1)*vsize(1),y=offset(2)+(j-1)*vsize(2),
+               0  "    z=offset(3)+(k-1)*vsize(3) and upper bounds x=offset(1)+i*vsize(1),
+               0  "    y=offset(2)+j*vsize(2),z=offset(3)+k*vsize(3).
+               0
+               0
+               0  ;IMPLICIT NONE;
+               0  Character*256 fname;      "The name of CT header file.                "
+               0  Character*80 Filename1;   "Name of individual slice files             "
+               0
+               0  Integer       asize(3);   "The size of the array for                  "
+               0  " CT data set.                              "
+               0  Real          vsize(3);   "The size of the voxels in the CT volume.   "
+               0  Real          oldvsize3;  "stores previously calculated vox. size in Z"
+               0  Real          offset(3);  "The offset distance of the voxels in the CT"
+               0  " data set. This identifies the position in "
+               0  " space of the lowest bound of the CT       "
+               0  " voxels.                                   "
+               0  Real          zpos_prev;  "stores Z position of previous slice        "
+               0  Integer       error;      "Not used.                                  "
+               0  Integer       ios;        "stores IOSTAT during reading of files      "
+               0  Integer*2     ctdata($CTIMAX,$CTJMAX,$CTKMAX); "The CT data set.      "
+               0
+               0  INTEGER Date;
+               0  INTEGER*2 Year,Month,Day;
+               0
+               0  REAL*4 REX,REY,REZ;
+               0  CHARACTER SEQNO*12,SCDATE*12,CTTYP*40,HSPNAM*40,PATID*16,PATNAM*40;
+               0  CHARACTER CMNTS1*40,CMNTS2*40,CMNTS3*40,CMNTS4*40;
+               0
+               0  BYTE Wert(512);
+               0  INTEGER*2 Wert1(512),Hex1,Hex2;
+               0  Integer*2 Zahl1,Zahl2,Zahl3,Zahl4;
+               0  INTEGER*4 DEZ(512);
+               0  INTEGER IT, Bytes, Snummer, J, I, K;
+               0
+               0
+               0  "now open the file of file names"
+               0
+               0  asize(3)=0; "initialize the number of slices"
+               0
+               0  OPEN($CTUnitNumber,file=fname,status='old',access='sequential');
+               0  LOOP[
+               1      "initialize variables for reading header info"
+               1      IT=0; J=0; I=0; K=0;
+               1      Bytes=140; Snummer=1;
+               1
+               1      READ($CTUnitNumber,END=:NOMOREFILES:,FMT='(A80)') Filename1;
+               1      OUTPUT61 Filename1; (/' Working on file '/
+               1      ' : ',A80);
+               1
+               1      "Open the CART-file as a direct-access file with a block length of 512"
+               1      OPEN ($CTUnitNumber+1,FILE=Filename1,STATUS='OLD',ACCESS='DIRECT',
+               1      FORM='UNFORMATTED',RECL=$RECL-FACTOR*128);
+               1
+               1      "Block 1 contains basic CT information. Memory structure:"
+               1      "Byte 0-139:   Integer*2"
+               1      "Byte 140-459: Character*1"
+               1      "Byte 460-467: 32 bit floating point"
+               1      "Byte 468-475: Integer*2"
+               1      "Byte 476-479: 32 bit floating point"
+               1      "Byte 480-512: Integer*2"
+               1      "See CADPLAN-Manual Appendix B for detailed information!"
+               1
+               1      " Read the integers as 1-Byte-int to prevent byte-switching
+               1
+               1      READ($CTUnitNumber+1,REC=Snummer) (Wert(IT),IT=1,Bytes),SEQNO,
+               1      SCDATE,CTTYP,
+               1      HSPNAM,PATID,PATNAM,CMNTS1,CMNTS2,CMNTS3,CMNTS4,REX,REY,
+               1      Wert(141),Wert(142),Wert(143),Wert(144),Wert(145),Wert(146),
+               1      Wert(147), Wert(148),REZ;
+               1
+               1      asize(3)=asize(3)+1;
+               1
+               1      IF(asize(3)=1)["output all header info"
+               2          OUTPUT61;
+               2          (//5X, 'Output of basic header information!'/);
+               2
+               2          "Combine both Bytes (sign taken into account):"
+               2
+               2          DO IT=1,Bytes+8[
+               3              IF (Wert(IT)<0)[
+               4                  Wert1(IT)=Wert(IT);
+               4                  IF (MOD(IT,2)=0)[
+               5                      Wert1(IT)=Wert1(IT)+256;
+               5                      ]
+               4                  ]
+               3              ELSE[
+               4                  Wert1(IT)=Wert(IT);
+               4                  ]
+               3              ]
+               2
+               2          DO IT=1,Bytes+8[
+               3              K=(IT+1)/2;
+               3              IF (MOD(IT,2)~=0)[
+               4                  Zahl1=Wert1(IT);
+               4                  ]
+               3              ELSE[
+               4                  Zahl2=Wert1(IT);
+               4                  ]
+               3              IF (MOD(IT,2)=0)[
+               4                  "     This is the resulting 2-byte-integer:"
+               4                  DEZ(K)=Zahl1*256+Zahl2;
+               4                  ]
+               3              IF (Wert(IT)~=0)[
+               4                  J=J+1;
+               4                  ]
+               3              ]
+               2          IF(J=0)[
+               3              OUTPUT61 Filename1;
+               3              (//' Found only zeroes in header of file '/A80//);
+               3              ]
+               2
+               2          "Conversion of FORTRAN date format:"
+               2          Date=DEZ(5);
+               2          Year=Date/512+72;
+               2          Month=(Date/512.-(Year-72))*512./32.;
+               2          Day=Date-(Year-72)*512-Month*32;
+               2
+               2          OUTPUT61 DEZ(2),DEZ(3),DEZ(4),Month,Day,Year,
+               2          DEZ(6),DEZ(7),DEZ(8),DEZ(9),DEZ(10),DEZ(11),SCDATE,
+               2          HSPNAM,PATID,PATNAM,CMNTS1,CMNTS2,CMNTS3,CMNTS4,REX,
+               2          REY,DEZ(70),DEZ(71),DEZ(72),DEZ(73),REZ;
+               2          (//'Number of slices:',T50,I4,
+               2          / 'Total number of blocks:',T50,I4,
+               2          / 'First data-block:',T50,I4,
+               2          / 'File creation date:',T46,I2,'-',I2,'-',I2,
+               2          / 'Type of diagnostic device'
+               2          / '(1000-1999 = X-ray CT)',T50,I4,
+               2          / 'Relative position of slice [mm]:',T50,I6,
+               2          / 'Size of pixel-matrix in X:',T50,I4,
+               2          / 'Size of pixel-matrix in Y:',T50,I4,
+               2          / 'Pixelsize (x) [um]:',T50,I5,
+               2          / 'Pixelsize (y) [um]:',T50,I5,
+               2          ///'Date of the scan (usergiven string):',T50,A12,
+               2          / 'Name of the hospital:',T50,A40,
+               2          / 'Patient-ID:',T50,A16,
+               2          / 'Patientname:',T50,A40,
+               2          / 'Free text:',T50,A40,
+               2          / 'Free text:',T50,A40,
+               2          / 'Free text:',T50,A40,
+               2          / 'Free text:',T50,A40,
+               2          / 'x-coordinate for sagittal slice (cm):',T60,F7.3,
+               2          / 'y-coordinate for coronal slice (cm):',T60,F7.3,
+               2          / 'x-coordinate for sagittal slice (pixel):',T60,I4,
+               2          / 'y-coordinate for coronal slice (pixel):',T60,I4,
+               2          / '1, if REZ has valid data:',T60,I4,
+               2          / 'Free Int:',T60,I4,
+               2          / 'z-coordinate (cm) of the central pixel row in frontal',
+               2          / 'and sagital slice (REZ):',T60,F7.3,/);
+               2
+               2          zpos_prev=DEZ(7)/10.;
+               2
+               2          "store size of X-Y array"
+               2          asize(1)=DEZ(8);
+               2          asize(2)=DEZ(9);
+               2
+               2          "store the size of the voxels"
+               2          vsize(1)=DEZ(10)/10000.;
+               2          vsize(2)=DEZ(11)/10000.;
+               2
+               2          "assume that data centred in X and Y for now"
+               2          offset(1)=-asize(1)*vsize(1)/2;
+               2          offset(2)=-asize(2)*vsize(2)/2;
+               2          "but not centred in Z"
+               2          offset(3)=DEZ(7)/10.;
+               2          ]
+               1      ELSE["just care about the Z-position in DEZ(7)"
+               2          DO IT=13,14[
+               3              IF (Wert(IT)<0)[
+               4                  Wert1(IT)=Wert(IT);
+               4                  IF(MOD(IT,2)=0)[
+               5                      Wert1(IT)=Wert1(IT)+256;
+               5                      ]
+               4                  ]
+               3              ELSE[
+               4                  Wert1(IT)=Wert(IT);
+               4                  ]
+               3              ]
+               2          DO IT=13,14[
+               3              K=(IT+1)/2;
+               3              IF (MOD(IT,2)~=0)[
+               4                  Zahl1=Wert1(IT);
+               4                  ]
+               3              ELSE[
+               4                  Zahl2=Wert1(IT);
+               4                  ]
+               3              IF (MOD(IT,2)=0)[
+               4                  DEZ(K)=Zahl1*256+Zahl2;
+               4                  ]
+               3              ]
+               2          OUTPUT61 DEZ(7);
+               2          (/' Relative position of slice [mm]:',T50,I12);
+               2          oldvsize3=vsize(3);
+               2          vsize(3)=DEZ(7)/10.-zpos_prev;
+               2          zpos_prev=DEZ(7)/10.;
+               2          WRITE(*,*);
+               2          IF(asize(3)>2 & vsize(3)~=oldvsize3)[
+               3              "slices are not regularly spaced"
+               3              OUTPUT61;(//' ***WARNING '/
+               3              ' The slices in this CT data are not evenly spaced.'/
+               3              ' Output phantom will have errors.'//);
+               3              ]
+               2          ]
+               1
+               1      "initialize variables for reading CT data"
+               1
+               1      IT=0; J=0; I=0; K=0;
+               1      Bytes=512; Snummer=14;
+               1
+               1      DO Snummer=14,269[
+               2
+               2          "Readout of 1byte-Integers from Filename1"
+               2
+               2          READ($CTUnitNumber+1,REC=Snummer,ERR=:CADPLANREADERR:,
+               2          IOSTAT=ios) (Wert(IT),IT=1,Bytes);
+               2
+               2          :CADPLANREADERR:
+               2          IF(ios > 0)["a read error occurred"
+               3              OUTPUT61;(//' ***WARNING '/
+               3              ' An error occurred during reading of CT data.'/
+               3              ' If this happens repeatedly, check the CT files.'//);
+               3              ]
+               2
+               2          "  If Wert .lt. 0, then accept the sign-bit as first digit of the integer"
+               2
+               2          DO IT=1,Bytes[
+               3              IF (Wert(IT)<0)[
+               4                  Wert1(IT)=Wert(IT);
+               4                  Wert1(IT)=Wert1(IT)+256;
+               4                  ]
+               3              ELSE[
+               4                  Wert1(IT)=Wert(IT);
+               4                  ]
+               3              ]
+               2
+               2
+               2          "     One byte is 2 hex. Calculation of the hex and then calculation of the"
+               2          "     decimal number from two adjacent bytes"
+               2
+               2          DO IT=1,Bytes[
+               3              K=(IT+1)/2;
+               3              Hex1=Wert1(IT)/16;
+               3              Hex2=MOD(Wert1(IT),16);
+               3
+               3              IF (MOD(IT,2)~=0)[
+               4                  Zahl1=Hex1;
+               4                  Zahl2=Hex2;
+               4                  ]
+               3              ELSE[
+               4                  Zahl3=Hex1;
+               4                  Zahl4=Hex2;
+               4                  ]
+               3              IF (MOD(IT,2)=0)[
+               4                  ctdata(K,Snummer-13,asize(3))=
+               4                  Zahl1*4096+Zahl2*256+Zahl3*16+Zahl4;
+               4                  IF(ctdata(K,Snummer-13,asize(3))~=0)[
+               5                      J=J+1;
+               5                      ]
+               4                  ]
+               3              ]
+               2          ]
+               1      IF (J=0)[
+               2          OUTPUT61;(///1X, 'Found only zeros in CT data!!!'///);
+               2          ]
+               1      CLOSE($CTUnitNumber+1);
+               1      ]
+               0
+               0  :NOMOREFILES:
+               0
+               0  OUTPUT61 fname; (/' Finished reading all files from '/
+               0  ' : ',A80);
+               0
+               0  CLOSE($CTUnitNumber);
+               0
+               0  OUTPUT61 offset(1),offset(1)+asize(1)*vsize(1),
+               0  offset(2),offset(2)+asize(2)*vsize(2),
+               0  offset(3),offset(3)+asize(3)*vsize(3),
+               0  asize(1),asize(2),asize(3),vsize(1),
+               0  vsize(2),vsize(3);
+               0  (//' Summary of CADPLAN CT data as read in:'//
+               0  '  X range : ',F12.5,' - ',F12.5,' cm'/
+               0  '  Y range : ',F12.5,' - ',F12.5,' cm'/
+               0  '  Z range : ',F12.5,' - ',F12.5,' cm'/
+               0  ' '/
+               0  '  X dimension = ',I12/
+               0  '  Y dimension = ',I12/
+               0  '  Z dimension = ',I12/
+               0  ' '/
+               0  '  X voxel size = ',F12.5,' cm'/
+               0  '  Y voxel size = ',F12.5,' cm'/
+               0  '  Z voxel size = ',F12.5,' cm');
+               0
+               0  RETURN;
+               0  END;
+               0
+1              0  %E    "ctcreate.mortran - start of subroutine SubsizeCT"
+               0  "******************************************************************************
+               0  "=CT-Data-Processing-Subroutines============================================"
+               0
+               0  subroutine SubsizeCT(asize,ctdata,vsize,offset);
+               0
+               0  "This subroutine allows the user to specify a subset of the original CT"
+               0  "volume.  The user enters the minimum and maximum X,Y and Z coordinates"
+               0  "of the planes defining the subvolume, and this subroutine determines"
+               0  "the matrix of voxel boundaries and the new size of the CT data. "
+               0
+               0  ;IMPLICIT NONE;
+               0  Integer       asize(3);   "The size of the array for                  "
+               0  " CT data set.                              "
+               0  Real          vsize(3);   "The size of the voxels in the CT volume.   "
+               0  Real          offset(3);  "The offset distance of the voxels in the CT"
+               0  " data set. This identifies the position in "
+               0  " space of the lowest bound of the CT       "
+               0  " voxels.                                   "
+               0  Integer*2     ctdata($CTIMAX,$CTJMAX,$CTKMAX); "The CT data set.      "
+               0  Integer       i,j,k,ii,jj,kk;    "Misc indices.                       "
+               0  Integer       imax,jmax,kmax; "actual max i,j,k indices for CT data   "
+               0  Real          xctsubmin,  "The minimum bounds "
+               0  xctsubmax,
+               0  yctsubmin,
+               0  yctsubmax,
+               0  zctsubmin,
+               0  zctsubmax;
+               0  Integer       ictsubmin,
+               0  ictsubmax,
+               0  jctsubmin,
+               0  jctsubmax,
+               0  kctsubmin,
+               0  kctsubmax;
+               0  Real xbounds($CTIMAX+1),
+               0  ybounds($CTJMAX+1),
+               0  zbounds($CTKMAX+1);
+               0
+               0  " Read in the dimension limits the user wants to use. If zeroes then  "
+               0  "  use entire volume.                                                 "
+               0  OUTPUT61; ('--------------------------------------------');
+               0  OUTPUT61; ('CT Volume subset selection.');
+               0  OUTPUT61; ('Please enter the positions of limiting ');
+               0  OUTPUT61; ('planes (cm):');
+               0  OUTPUT61;
+               0  ('  xctsubmin,xctsubmax,yctsubmin,yctsubmax,zctsubmin,zctsubmax');
+               0  read(5,*) xctsubmin,xctsubmax,
+               0  yctsubmin,yctsubmax,
+               0  zctsubmin,zctsubmax;
+               0  OUTPUT61 xctsubmin,xctsubmax,yctsubmin,yctsubmax,zctsubmin,zctsubmax;
+               0  (' : ',6F10.4);
+               0  imax=asize(1);
+               0  jmax=asize(2);
+               0  kmax=asize(3);
+               0  "Crank out the bounds."
+               0  xbounds(1)=offset(1); DO i=2,imax+1 [xbounds(i)=xbounds(i-1)+vsize(1)];
+               0  ybounds(1)=offset(2); DO i=2,jmax+1 [ybounds(i)=ybounds(i-1)+vsize(2)];
+               0  zbounds(1)=offset(3); DO i=2,kmax+1 [zbounds(i)=zbounds(i-1)+vsize(3)];
+               0  IF (xctsubmin=0.0 & xctsubmax=0.0 & yctsubmin=0.0 & yctsubmax = 0.0 &
+               0  zctsubmin=0.0 & zctsubmax=0.0) [
+               1      OUTPUT61; (' No subset requested, will use entire CT volume.');
+               1      OUTPUT61; ('--------------------------------------------');
+               1      xctsubmin=xbounds(1); xctsubmax=xbounds(imax+1);
+               1      yctsubmin=ybounds(1); yctsubmax=ybounds(jmax+1);
+               1      zctsubmin=zbounds(1); zctsubmax=zbounds(kmax+1);
+               1      ]
+               0  IF ((xctsubmin<xbounds(1) & xctsubmax<xbounds(1)) |
+               0  (xctsubmax>xbounds(imax+1) & xctsubmin>xbounds(imax+1)))[
+               1      OUTPUT61; (' ***WARNING: X range does not intersect the original');
+               1      OUTPUT61; (' CT data.  Will use entire X range of original data.');
+               1      OUTPUT61; ('----------------------------------------------');
+               1      xctsubmin=xbounds(1);
+               1      xctsubmax=xbounds(imax+1);
+               1      ]
+               0  IF ((yctsubmin<ybounds(1) & yctsubmax<ybounds(1)) |
+               0  (yctsubmax>ybounds(jmax+1) & yctsubmin>ybounds(jmax+1)))[
+               1      OUTPUT61; (' ***WARNING: Y range does not intersect the original');
+               1      OUTPUT61; (' CT data.  Will use entire Y range of original data.');
+               1      OUTPUT61; ('----------------------------------------------');
+               1      yctsubmin=ybounds(1);
+               1      yctsubmax=ybounds(jmax+1);
+               1      ]
+               0  IF ((zctsubmin<zbounds(1) & zctsubmax<zbounds(1)) |
+               0  (zctsubmax>zbounds(kmax+1) & zctsubmin>zbounds(kmax+1)))[
+               1      OUTPUT61; (' ***WARNING: Z range does not intersect the original');
+               1      OUTPUT61; (' CT data.  Will use entire Z range of original data.');
+               1      OUTPUT61; ('----------------------------------------------');
+               1      zctsubmin=zbounds(1);
+               1      zctsubmax=zbounds(kmax+1);
+               1      ]
+               0  IF (xctsubmax <= xctsubmin)[
+               1      OUTPUT61; ('***WARNING: X upper limit is <=  X lower limit');
+               1      OUTPUT61; (' will use entire X range.                     ');
+               1      OUTPUT61; ('----------------------------------------------');
+               1      xctsubmin=xbounds(1);
+               1      xctsubmax=xbounds(imax+1);
+               1      ]
+               0  IF (yctsubmax <= yctsubmin)[
+               1      OUTPUT61; ('***WARNING: Y upper limit is <=  Y lower limit');
+               1      OUTPUT61; (' will use entire Y range.                     ');
+               1      OUTPUT61; ('----------------------------------------------');
+               1      yctsubmin=ybounds(1);
+               1      yctsubmax=ybounds(jmax+1);
+               1      ]
+               0  IF (zctsubmax <= zctsubmin)[
+               1      OUTPUT61; ('***WARNING: Z upper limit is <=  Z lower limit');
+               1      OUTPUT61; (' will use entire Z range.                     ');
+               1      OUTPUT61; ('----------------------------------------------');
+               1      zctsubmin=zbounds(1);
+               1      zctsubmax=zbounds(kmax+1);
+               1      ]
+               0  "Bounds checking."
+               0  IF (xctsubmin<xbounds(1))      [
+               1      OUTPUT61; ('X lower limit out of bounds, will be set to ');
+               1      OUTPUT61; (' lower bound.                               ');
+               1      OUTPUT61; ('--------------------------------------------');
+               1      xctsubmin=xbounds(1);
+               1      ]
+               0  IF (xctsubmax>xbounds(imax+1)) [
+               1      OUTPUT61; ('X upper limit out of bounds, will be set to ');
+               1      OUTPUT61; (' upper bound.                                ');
+               1      OUTPUT61; ('--------------------------------------------');
+               1      xctsubmax=xbounds(imax+1);
+               1      ]
+               0  IF (yctsubmin<ybounds(1))      [
+               1      OUTPUT61; ('Y lower limit out of bounds, will be set to ');
+               1      OUTPUT61; (' lower bound.                               ');
+               1      OUTPUT61; ('--------------------------------------------');
+               1      yctsubmin=ybounds(1);
+               1      ]
+               0  IF (yctsubmax>ybounds(jmax+1)) [
+               1      OUTPUT61; ('Y upper limit out of bounds, will be set to ');
+               1      OUTPUT61; (' upper bound.                               ');
+               1      OUTPUT61; ('--------------------------------------------');
+               1      yctsubmax=ybounds(jmax+1);
+               1      ]
+               0  IF (zctsubmin<zbounds(1))      [
+               1      OUTPUT61; ('Z lower limit out of bounds, will be set to ');
+               1      OUTPUT61; (' lower bound.                               ');
+               1      OUTPUT61; ('--------------------------------------------');
+               1      zctsubmin=zbounds(1);
+               1      ]
+               0  IF (zctsubmax>zbounds(kmax+1)) [
+               1      OUTPUT61; ('Z upper limit out of bounds, will be set to ');
+               1      OUTPUT61; (' upper bound.                               ');
+               1      OUTPUT61; ('--------------------------------------------');
+               1      zctsubmax=zbounds(kmax+1);
+               1      ]
+               0  "Do the shift of the arrays"
+               0  "Determine the indices that will include the desired dimensions.    "
+               0  OUTPUT61;('The voxel index limits are as follows:');
+               0  DO i=1,imax [
+               1      IF(xbounds(i)<=xctsubmin & xbounds(i+1)>xctsubmin)  [ictsubmin=i;];
+               1      IF(xbounds(i)<=xctsubmax  & xbounds(i+1)=>xctsubmax) [ictsubmax=i;];
+               1      ];
+               0  OUTPUT61 ictsubmin,ictsubmax;('I Limits -> i=',I6,' to i=',I6);
+               0  DO j=1,jmax [
+               1      IF(ybounds(j)<=yctsubmin & ybounds(j+1)>yctsubmin)  [jctsubmin=j;];
+               1      IF(ybounds(j)<=yctsubmax  & ybounds(j+1)=>yctsubmax) [jctsubmax=j;];
+               1      ];
+               0  OUTPUT61 jctsubmin,jctsubmax;('J Limits -> j=',I6,' to j=',I6);
+               0  DO k=1,kmax [
+               1      IF(zbounds(k)<=zctsubmin & zbounds(k+1)>zctsubmin)  [kctsubmin=k;];
+               1      IF(zbounds(k)<=zctsubmax  & zbounds(k+1)=>zctsubmax) [kctsubmax=k;];
+               1      ];
+               0  IF (zbounds(kmax)=zctsubmax ) [kctsubmax=kmax;];
+               0  OUTPUT61 kctsubmin,kctsubmax;('K Limits -> k=',I6,' to k=',I6);
+               0  xctsubmin=xbounds(ictsubmin); xctsubmax=xbounds(ictsubmax+1);
+               0  yctsubmin=ybounds(jctsubmin); yctsubmax=ybounds(jctsubmax+1);
+               0  zctsubmin=zbounds(kctsubmin); zctsubmax=zbounds(kctsubmax+1);
+               0  OUTPUT61 xctsubmin,xctsubmax,yctsubmin,yctsubmax,zctsubmin,zctsubmax;
+               0  (' xctsubmin,xctsubmax,yctsubmin,yctsubmax,zctsubmin,zctsubmax (cm)'/
+               0  ' after adjustment to fit integer no. of voxels '/
+               0  ' : ',6F10.4);
+               0  "Copy(reset?) new CT volume into a temporary array.                 "
+               0  ii=1;
+               0  jj=1;
+               0  kk=1;
+               0  DO k=kctsubmin,kctsubmax [
+               1      DO j=jctsubmin,jctsubmax [
+               2          DO i=ictsubmin,ictsubmax [
+               3              ctdata(ii,jj,kk)=ctdata(i,j,k);
+               3
+               3
+               3
+               3
+               3
+               3
+               3
+               3
+               3
+               3
+               3
+               3
+               3              ii=ii+1;
+               3              ];
+               2          ii=1;
+               2          jj=jj+1;
+               2          ];
+               1      jj=1;
+               1      kk=kk+1;
+               1      ];
+               0  "Reset offsets"
+               0  offset(1)=offset(1)+vsize(1)*(ictsubmin-1);
+               0  offset(2)=offset(2)+vsize(2)*(jctsubmin-1);
+               0  offset(3)=offset(3)+vsize(3)*(kctsubmin-1);
+               0  asize(1)=ictsubmax-ictsubmin+1;
+               0  asize(2)=jctsubmax-jctsubmin+1;
+               0  asize(3)=kctsubmax-kctsubmin+1;
+               0
+               0  OUTPUT61; ('============================================');
+               0  END;
+               0  ;
+               0
+               0  "-----Subroutine-ReSampleCT-------------------------------------------------"
+               0  subroutine ResampleCT(ct_imax,ct_jmax,ct_kmax,
+               0  ct_xthickness,ct_ythickness,ct_zthickness,
+               0  ct_data,
+               0  xyz_imax,xyz_jmax,xyz_kmax,
+               0  xyz_xbounds,xyz_ybounds,xyz_zbounds,
+               0  xyz_ct,
+               0  CTOffset);
+               0  "---------------------------------------------------------------------------"
+               0  "This subroutine should allow up- and down-sizing of CT data
+               0  "limited by $IMAX,$JMAX,$KMAX--the max number of voxels allowed in
+               0  "the dosxyznrc phantom
+               0
+               0  "Finding the xyz boundaries for each ct voxel, determining the weight to
+               0  "apply to the ct voxel, and calculating the resized xyz data by multiplying
+               0  "the ct data by its appropriate weights is done in a single set of nested loops.
+               0  "This allows the weight array to be 1-D and
+               0  "also allows the upper and lower bounds in the x,y and z directions
+               0  "to be single variables
+               0
+               0  "Also, the user inputs the dimensions of the dosxyznrc voxels.
+               0  "This means that this subroutine actually calculates imax, jmax, kmax
+               0  "and xbound(i),ybound(i),zbound(i) to be used by dosxyznrc from now on.
+               0  "Of course, imax, jmax, kmax are limited by $IMAX, $JMAX, $KMAX.
+               0  "This method assumes that the dimensions of either the total CT
+               0  "data or of each CT voxel (or both) are known and can be input to the
+               0  "subroutine.
+               0  "---------------------------------------------------------------------------"
+               0  ;IMPLICIT NONE;
+               0  INTEGER ct_imax,     "the max # of ct voxels in x-direction"
+               0  ct_jmax,     "the max # of ct voxels in y-direction"
+               0  ct_kmax,     "the max # of ct voxels in z-direction"
+               0  xyz_imax,    "max # of xyz voxels in x-direction"
+               0  xyz_jmax,    "max # of xyz voxels in y-direction"
+               0  xyz_kmax,    "max # of xyz voxels in z-direction"
+               0  i_lower_xyz, "index for lower x bounds of ct voxels"
+               0  i_upper_xyz, "index for upper x bounds of ct voxels"
+               0  j_lower_xyz, "index for lower y bounds of ct voxels"
+               0  j_upper_xyz, "index for upper y bounds of ct voxels"
+               0  k_lower_xyz, "index for lower z bounds of ct voxels"
+               0  k_upper_xyz, "index for upper z bounds of ct voxels"
+               0  param,       "parameter for the 1-D weight array"
+               0  i_ct,j_ct,k_ct,i_xyz,j_xyz,k_xyz,i,j,k; "loop indices"
+               0
+               0  INTEGER*2 ct_data($CTIMAX,$CTJMAX,$CTKMAX), "Original ct data."
+               0  xyz_ct($IMAX,$JMAX,$KMAX);        "Resampled ct data."
+               0
+               0  REAL    xyz_xbounds($IMAX+1), "xyz voxel boundaries in x direction"
+               0  xyz_ybounds($JMAX+1), "xyz voxel boundaries in y direction"
+               0  xyz_zbounds($KMAX+1), "xyz voxel boundaries in z direction"
+               0
+               0  ct_xthickness, "thickness of each ct voxel in x-direction"
+               0  ct_ythickness, "thickness of each ct voxel in y-direction"
+               0  ct_zthickness, "thickness of each ct voxel in z-direction"
+               0  "Current incarnation assumes that these are"
+               0  "available and can be passed to the subroutine."
+               0  "If not, they can be calculated from the total"
+               0  "dimensions of the CT data"
+               0
+               0  xyz_xthickness, "thickness of each xyz voxel in x-direction"
+               0  xyz_ythickness, "thickness of each xyz voxel in y-direction"
+               0  xyz_zthickness, "thickness of each xyz voxel in z-direction"
+               0  weight_xyz($CTIMAX+$CTJMAX+$CTKMAX+2), "fraction of xyz"
+               0  "voxel in ct voxel as calculated separately in x,y,"
+               0  "and z-directions"
+               0  CTOffset(3),      " The offset of the CT data from the origin."
+               0  realxyz_ct($IMAX,$JMAX,$KMAX)
+               0  ;
+               0  CHARACTER*1 iorjork; "stores character i or j or k for use in FIND_WEIGHT"
+               0  "macro"
+               0  "---------------------------------------------------------------------------"
+               0  REPLACE {$FIND_UPPER_LOWER_#_#_BNDS;} WITH {
+            {  0  ;
+            {  0  DO i_xyz=1,xyz_{P1}max[
+            {  0  "find the xyz_voxel that the ct voxel lower bound lies in"
+            {  0  IF((xyz_{P2}bounds(i_xyz) <=
+            {  0  xyz_{P2}bounds(1)+ct_{P2}thickness*({P1}_ct-1)) &
+            {  0  (xyz_{P2}bounds(i_xyz+1) >=
+            {  0  xyz_{P2}bounds(1)+ct_{P2}thickness*({P1}_ct-1)))[
+            {  0  {P1}_lower_xyz=i_xyz;
+            {  0  ]
+            {  0  "find the xyz_voxel that the ct voxel upper bound lies in"
+            {  0  IF((xyz_{P2}bounds(i_xyz) <=
+            {  0  xyz_{P2}bounds(1)+ct_{P2}thickness*FLOAT({P1}_ct)) &
+            {  0  (xyz_{P2}bounds(i_xyz+1) >=
+            {  0  xyz_{P2}bounds(1)+ct_{P2}thickness*FLOAT({P1}_ct))
+            {  0  )[
+            {  0  {P1}_upper_xyz=i_xyz;
+            {  0  EXIT;
+            {  0  ]
+            {  0  ]
+            {  0  ;
+            {  0  }
+               0  ;
+               0
+               0  REPLACE {$FIND_WEIGHT_#_#;} WITH {
+            {  0  ;
+            {  0  "param below allows the use of a 1-D weight array"
+            {  0  iorjork='{P1}';
+            {  0  IF(iorjork='i')[ param=0; ]
+            {  0  ELSEIF(iorjork='j')[ param=xyz_imax; ]
+            {  0  ELSEIF(iorjork='k')[ param=xyz_imax+xyz_jmax; ]
+            {  0
+            {  0  IF({P1}_lower_xyz={P1}_upper_xyz)["lower and upper bounds are in"
+            {  0  "the same xyz voxel"
+            {  0  weight_xyz(param+{P1}_lower_xyz)=ct_{P2}thickness/
+            {  0  (xyz_{P2}bounds({P1}_lower_xyz+1)-
+            {  0  xyz_{P2}bounds({P1}_lower_xyz));
+            {  0  ]
+            {  0  ELSE["lower and upper bounds NOT in the same xyz voxel"
+            {  0  DO i_xyz={P1}_lower_xyz,{P1}_upper_xyz[
+            {  0  IF((xyz_{P2}bounds(i_xyz)>=
+            {  0  (xyz_{P2}bounds(1)+ct_{P2}thickness*({P1}_ct-1)))&
+            {  0  (xyz_{P2}bounds(i_xyz+1)<=
+            {  0  (xyz_{P2}bounds(1)+ct_{P2}thickness*({P1}_ct))))[
+            {  0  "the xyz voxel is entirely in the ct voxel"
+            {  0  weight_xyz(param+i_xyz)=1.00;
+            {  0  ]
+            {  0  ELSEIF((xyz_{P2}bounds(i_xyz)<=
+            {  0  (xyz_{P2}bounds(1)+ct_{P2}thickness*({P1}_ct-1)))&
+            {  0  (xyz_{P2}bounds(i_xyz+1)<=
+            {  0  (xyz_{P2}bounds(1)+ct_{P2}thickness*({P1}_ct))))[
+            {  0  "the ct voxel straddles the upper bound of the xyz voxel"
+            {  0  weight_xyz(param+i_xyz)=
+            {  0  (xyz_{P2}bounds(i_xyz+1)-(xyz_{P2}bounds(1)+
+            {  0  ct_{P2}thickness*({P1}_ct-1)))/
+            {  0  (xyz_{P2}bounds(i_xyz+1)-xyz_{P2}bounds(i_xyz));
+            {  0  ]
+            {  0  ELSE[ "the ct voxel straddles the lower bound of the xyz voxel"
+            {  0  weight_xyz(param+i_xyz)=
+            {  0  ((xyz_{P2}bounds(1)+ct_{P2}thickness*({P1}_ct))-
+            {  0  xyz_{P2}bounds(i_xyz))/
+            {  0  (xyz_{P2}bounds(i_xyz+1)-xyz_{P2}bounds(i_xyz));
+            {  0  ]
+            {  0  ]
+            {  0  ]
+            {  0  ;
+            {  0  }
+               0  ;
+               0
+               0  "---------------------------------------------------------------------------"
+               0  OUTPUT61;(/' Resample CT data for dosxyznrc '/
+               0  ' --------------------------- ');
+               0
+               0  "Have the user enter the x,y,z dimensions that he/she wants.  Previously"
+               0  "these dimensions were passed as arguments to this subroutine"
+               0
+               0  :INPUT_DIMENSIONS:
+               0  OUTPUT61 ct_imax*ct_xthickness/$IMAX,ct_jmax*ct_ythickness/$JMAX,
+               0  ct_kmax*ct_zthickness/$KMAX;
+               0  (/' Input the x,y,z dimensions (cm) of the dosxyznrc voxels on one line'/
+               0  ' (min= ',F12.5,' x',F12.5,' x',F12.5,' cm)'/
+               0  ' :',$);
+               0  read(5,*) xyz_xthickness,xyz_ythickness,xyz_zthickness;
+               0  OUTPUT61 xyz_xthickness,xyz_ythickness,xyz_zthickness; (3F12.5);
+               0
+               0  IF(xyz_xthickness <=0.|xyz_ythickness <=0.|xyz_zthickness <=0.)[
+               1      OUTPUT61; (' Dimensions must all be positive.  Try again.');
+               1      STOP;
+               1      ]
+               0  ELSEIF(xyz_xthickness > ct_imax*ct_xthickness|
+               0  xyz_ythickness > ct_jmax*ct_ythickness|
+               0  xyz_zthickness > ct_kmax*ct_zthickness)[
+               1      OUTPUT61;(' Dimension in a direction cannot be greater than total size of'/
+               1      ' CT data in that direction.  Try again.');
+               1      STOP;
+               1      ]
+               0  ELSEIF(xyz_xthickness < ct_imax*ct_xthickness/$IMAX|
+               0  xyz_ythickness < ct_jmax*ct_ythickness/$JMAX|
+               0  xyz_zthickness < ct_kmax*ct_zthickness/$KMAX)[
+               1      OUTPUT61;
+               1      (' Dimensions in at least one direction < min allowed. Either increase'/
+               1      ' dimension(s) or go into dosxyznrc_user_macros.mortran and increase IMAX,'/
+               1      ' JMAX and/or KMAX');
+               1      STOP;
+               1      ]
+               0
+               0  xyz_imax=INT(ct_imax*ct_xthickness/xyz_xthickness);
+               0  xyz_jmax=INT(ct_jmax*ct_ythickness/xyz_ythickness);
+               0  xyz_kmax=INT(ct_kmax*ct_zthickness/xyz_zthickness);
+               0
+               0  "adjust x,y,z dimensions so that the voxels fit exactly on CT data"
+               0
+               0  xyz_xthickness=FLOAT(ct_imax)*ct_xthickness/xyz_imax;
+               0  xyz_ythickness=FLOAT(ct_jmax)*ct_ythickness/xyz_jmax;
+               0  xyz_zthickness=FLOAT(ct_kmax)*ct_zthickness/xyz_kmax;
+               0  OUTPUT61 xyz_xthickness; ('New X voxel thickness -> ',F10.2);
+               0  OUTPUT61 xyz_ythickness; ('New Y voxel thickness -> ',F10.2);
+               0  OUTPUT61 xyz_zthickness; ('New Z voxel thickness -> ',F10.2);
+               0  OUTPUT61 xyz_imax;       ('New number X voxels   -> ',I10);
+               0  OUTPUT61 xyz_jmax;       ('New number Y voxels   -> ',I10);
+               0  OUTPUT61 xyz_kmax;       ('New number Z voxels   -> ',I10);
+               0
+               0
+               0  OUTPUT61 xyz_xthickness,xyz_ythickness,xyz_zthickness;
+               0  (' Final x,y,z dimensions of dosxyznrc voxels in cm (adjusted so that an',
+               0  ' integer'/
+               0  ' number fit exactly on the CT data):',3F12.5);
+               0
+               0  "calculate the bounds of the xyz voxels"
+               0  xyz_xbounds(1)=CTOffset(1);
+               0  xyz_ybounds(1)=CTOffset(2);
+               0  xyz_zbounds(1)=CTOffset(3);
+               0  DO i_xyz=1,xyz_imax[
+               1      xyz_xbounds(i_xyz+1)=xyz_xbounds(i_xyz)+xyz_xthickness;
+               1      ];
+               0  DO i_xyz=1,xyz_jmax[
+               1      xyz_ybounds(i_xyz+1)=xyz_ybounds(i_xyz)+xyz_ythickness;
+               1      ];
+               0  DO i_xyz=1,xyz_kmax[
+               1      xyz_zbounds(i_xyz+1)=xyz_zbounds(i_xyz)+xyz_zthickness;
+               1      ];
+               0
+               0  "zero out the weights"
+               0  DO i_xyz=1,xyz_imax+xyz_jmax+xyz_kmax[
+               1      weight_xyz(i_xyz)=0.0;
+               1      ]
+               0
+               0  "zero out the resized ct data"
+               0  DO i_xyz=1,xyz_imax[
+               1      DO j_xyz=1,xyz_jmax[
+               2          DO k_xyz=1,xyz_kmax[
+               3              realxyz_ct(i_xyz,j_xyz,k_xyz)=0.0;
+               3              ]
+               2          ]
+               1      ]
+               0
+               0  OUTPUT61; ('Calculating bounds and new CT values');
+               0  DO i_ct=1,ct_imax[
+               1      $FIND_UPPER_LOWER_i_x_BNDS;
+               1      $FIND_WEIGHT_i_x;
+               1      DO j_ct=1,ct_jmax[
+               2          $FIND_UPPER_LOWER_j_y_BNDS;
+               2          $FIND_WEIGHT_j_y;
+               2          DO k_ct=1,ct_kmax[
+               3              $FIND_UPPER_LOWER_k_z_BNDS;
+               3              $FIND_WEIGHT_k_z;
+               3              DO i_xyz=i_lower_xyz,i_upper_xyz[
+               4                  DO j_xyz=j_lower_xyz,j_upper_xyz[
+               5                      DO k_xyz=k_lower_xyz,k_upper_xyz[
+               6                          realxyz_ct(i_xyz,j_xyz,k_xyz)=
+               6                          realxyz_ct(i_xyz,j_xyz,k_xyz)+
+               6                          FLOAT(ct_data(i_ct,j_ct,k_ct))*
+               6                          weight_xyz(i_xyz)*
+               6                          weight_xyz(xyz_imax+j_xyz)*
+               6                          weight_xyz(xyz_imax+xyz_jmax+k_xyz);
+               6                          "                   OUTPUT61 i_xyz,j_xyz,k_xyz,realxyz_ct(i_xyz,j_xyz,k_xyz),
+               6                          "                            ct_data(i_ct,j_ct,k_ct),
+               6                          "                            weight_xyz(i_xyz);
+               6                          "                   ('In Loop ->',3I4,F12.4,I8,F12.6,F12.6);
+               6
+               6                          ]
+               5                      ]
+               4                  ]
+               3              ]
+               2          ]
+               1      ];
+               0  DO i=1,xyz_imax[
+               1      DO j=1,xyz_jmax[
+               2          DO k=1,xyz_kmax[
+               3              xyz_ct(i,j,k)=NINT(realxyz_ct(i,j,k));
+               3              ];
+               2          ];
+               1      ];
+               0  "a debugging loop
+               0  "j_ct=0;
+               0  "LOOP[
+               0  "  j_ct=j_ct+1;
+               0  "  i_ct=0;
+               0  "  i_xyz=0;
+               0  "  LOOP[
+               0  "    i_ct=i_ct+2;
+               0  "    i_xyz=i_xyz+1;
+               0  "    OUTPUT ct_data(i_ct-1,j_ct,1),ct_data(i_ct,j_ct,1),
+               0  "           xyz_ct(i_xyz,j_ct,1);
+               0  "     (' ct_1,ct_2,xyz ',3I8);
+               0  "  ]UNTIL (i_ct=256);
+               0  "]UNTIL (j_ct=256);
+               0
+               0
+               0  RETURN;
+               0  END;
+               0
+1              0  %E    "ctcreate.mortran - start of subroutine CTToMedium"
+               0  "******************************************************************************
+               0  "
+               0  subroutine CTToMedium(new_x_dim,new_y_dim,new_z_dim,
+               0  New_CT_Data,
+               0  num_material,
+               0  material_region,
+               0  density_region,
+               0  material_name);
+               0  "---------------------------------------------------------------------------"
+               0  "A subroutine for converting CT Hounsfield numbers into density data.
+               0  "The user specifies the number of media (<= $MXMED), the type
+               0  "potential CT offset value        "
+               0  "of media, and the CT-density ramp for each medium.
+               0  "The total ramp is assumed continuous in CT number, but may
+               0  "have discontinuities in density where one medium ends and the next begins.
+               0  "If the user enters 0 for the number of media, a default, hard-wired
+               0  "CT-density ramp is used.  The default ramp uses 4 media.  Note that in
+               0  "previous versions of ctcreate, this ramp was optimized for Pinnacle format
+               0  "data, which has CT no. > 0, but has since been shifted down by 1024 to
+               0  "the CT range of typical DICOM data
+               0  "
+               0  "  medium                  (CTmax-CTmin)/(max density - min density)
+               0  "  ------                  --------------------------------------
+               0  " AIR700ICRU                       (-974 - -1024)/(0.044-0.001)
+               0  " LUNG700ICRU                      (-724 - -974)/(0.302-0.044)
+               0  " ICRUTISSUE700ICRU                (101 - -724)/(1.101-0.302)
+               0  " ICRPBONE700ICRU                  (1976 - 101)/(2.088-1.101)
+               0  "
+               0  INTEGER*2 New_CT_Data($IMAX,$JMAX,$KMAX); "resized CT data                  "
+               0  INTEGER   new_x_dim,                      "resized number of x voxels       "
+               0  new_y_dim,                      "resized number of y voxels       "
+               0  new_z_dim,                      "resized number of z voxels       "
+               0  material_region($MXREG),        "matrix of ints identifying media "
+               0  num_material,                   "the number of materials in the   "
+               0  " ramp.                           "
+               0  material_ct_upper_bound($MXMED),"ct upper bounds of ramps         "
+               0  material_ct_lower_bound,        "min. ct number of ramp           "
+               0  i_material,I,J,K,               "indices                          "
+               0  ct_low,ct_high;                 "for outputting warnings          "
+               0  REAL      density_region($MXREG),         "matrix of material densities     "
+               0  material_density_lower_bound($MXMED), "lower bounds of ramps      "
+               0  material_density_upper_bound($MXMED); "upper bounds of ramps      "
+               0  CHARACTER*4 material_name(24,$MXMED);     "names of the media               "
+               0  "---------------------------------------------------------------------------"
+               0  REPLACE {$IRCTM(#,#,#)} WITH {(1 + {P1} + ({P2}-1)*new_x_dim +
+            {  0  ({P3}-1)*new_x_dim*new_y_dim)};
+               0  "---------------------------------------------------------------------------"
+               0  "zero out the arrays first"
+               0  DO I=1,new_x_dim[
+               1      DO J=1,new_y_dim[
+               2          DO K=1,new_z_dim[
+               3              material_region($IRCTM(I,J,K))=0.;
+               3              density_region($IRCTM(I,J,K))=0;
+               3              ]
+               2          ]
+               1      ]
+               0
+               0  "Now, get the ramp info either interactively or using the hard-wired
+               0  "ramp function (user enters 0 for number of materials)"
+               0  "This will eventually go into the subroutine GetCTConvRamp"
+               0  OUTPUT61;(/' The CT-Density Ramp'/
+               0  ' -------------------'/);
+               0  :GETRAMPS:
+               0  OUTPUT61 $MXMED;
+               0  (' Number of media (max ',I4,'), min. CT number of ramp'/
+               0  ' (0,0 if you want to use the hard-wired ramp function): ',$);
+               0  READ(5,*) num_material,material_ct_lower_bound;
+               0  OUTPUT61 num_material,material_ct_lower_bound;(2I10);
+               0  IF(num_material<0 | num_material > $MXMED)["error"
+               1      OUTPUT61;(' Number of materials out of range. Try again. ');
+               1      STOP;
+               1      ]
+               0  ELSEIF(num_material=0)["use the hard-wired ramp"
+               1      OUTPUT61; (/' Using the following default CT ramp.'/
+               1      ' Note: This is optimized for display and example '/
+               1      ' calculations.  It is recommended that you enter '/
+               1      ' the CT conversion ramp for your own imager.'/);
+               1      DO i=1,4 [ DO j=1,24 [ material_name(j,i)=' '; ]; ];
+               1      num_material=4;
+               1      material_ct_lower_bound=-1024;
+               1
+               1      "CT ramp information for Air"
+               1      material_name(1,1)='A'; material_name(2,1)='I'; material_name(3,1)='R';
+               1      material_name(4,1)='7'; material_name(5,1)='0'; material_name(6,1)='0';
+               1      material_name(7,1)='I'; material_name(8,1)='C'; material_name(9,1)='R';
+               1      material_name(10,1)='U';
+               1      material_ct_upper_bound(1)= -974; material_density_lower_bound(1)=0.001;
+               1      material_density_upper_bound(1)=0.044;
+               1      "commented out density upper and lower bounds are for a direct output"
+               1      "of Hounsfield numbers"
+               1      "material_density_lower_bound(1)=-1024;"
+               1      "material_density_upper_bound(1)=-974;"
+               1
+               1      "CT ramp information for Lung"
+               1      material_name(1,2)='L'; material_name(2,2)='U'; material_name(3,2)='N';
+               1      material_name(4,2)='G'; material_name(5,2)='7'; material_name(6,2)='0';
+               1      material_name(7,2)='0'; material_name(8,2)='I'; material_name(9,2)='C';
+               1      material_name(10,2)='R'; material_name(11,2)='U';
+               1      material_ct_upper_bound(2)= -724; material_density_lower_bound(2)=0.044;
+               1      material_density_upper_bound(2)=0.302;
+               1      "commented out density upper and lower bounds are for a direct output"
+               1      "of Hounsfield numbers"
+               1      "material_density_lower_bound(2)=-974;"
+               1      "material_density_upper_bound(2)=-724;"
+               1
+               1      "CT ramp information for Tissue"
+               1      material_name(1,3)='I'; material_name(2,3)='C'; material_name(3,3)='R';
+               1      material_name(4,3)='U'; material_name(5,3)='T'; material_name(6,3)='I';
+               1      material_name(7,3)='S'; material_name(8,3)='S'; material_name(9,3)='U';
+               1      material_name(10,3)='E'; material_name(11,3)='7'; material_name(12,3)='0';
+               1      material_name(13,3)='0'; material_name(14,3)='I'; material_name(15,3)='C';
+               1      material_name(16,3)='R'; material_name(17,3)='U';
+               1      material_ct_upper_bound(3)= 101;
+               1      material_density_lower_bound(3)=0.302;
+               1      material_density_upper_bound(3)=1.101;
+               1      "material_density_lower_bound(3)=-724;"
+               1      "material_density_upper_bound(3)=101;"
+               1
+               1      "CT ramp information for Bone"
+               1      material_name(1,4)='I'; material_name(2,4)='C'; material_name(3,4)='R';
+               1      material_name(4,4)='P'; material_name(5,4)='B'; material_name(6,4)='O';
+               1      material_name(7,4)='N'; material_name(8,4)='E'; material_name(9,4)='7';
+               1      material_name(10,4)='0'; material_name(11,4)='0'; material_name(12,4)='I';
+               1      material_name(13,4)='C'; material_name(14,4)='R'; material_name(15,4)='U';
+               1      material_ct_upper_bound(4)= 1976; material_density_lower_bound(4)=1.101;
+               1      material_density_upper_bound(4)=2.088;
+               1      "material_density_lower_bound(4)=101;"
+               1      "material_density_upper_bound(4)=1976;"
+               1      OUTPUT61 material_ct_lower_bound;
+               1      (' CT no. lower bound of ramp = ',I5);
+               1      DO i_material=1,num_material[
+               2          OUTPUT61 i_material,(material_name(j,i_material),j=1,24);
+               2          (/' Medium ',I4,' : ',24a1);
+               2          OUTPUT61 material_ct_upper_bound(i_material),
+               2          material_density_lower_bound(i_material),
+               2          material_density_upper_bound(i_material);
+               2          (' CT no. upper bound, density lower bound (g/cm^3),'/
+               2          ' density upper bound (g/cm^3)--all on one line'/
+               2          ' : ',I5,3F12.5);
+               2          ]
+               1      ]
+               0  ELSE["user enters ramp"
+               1      DO i_material=1,num_material[
+               2          OUTPUT61 i_material;(/' Medium ',I4,' : ',$);
+               2          INPUT (material_name(j,i_material),j=1,24);(24a1);
+               2          OUTPUT61 (material_name(j,i_material),j=1,24);(24a1);
+               2          OUTPUT61;
+               2          (' CT no. upper bound, density lower bound (g/cm^3),'/
+               2          ' density upper bound (g/cm^3)--all on one line'/
+               2          ' : ',$);
+               2          READ(5,*) material_ct_upper_bound(i_material),
+               2          material_density_lower_bound(i_material),
+               2          material_density_upper_bound(i_material);
+               2          OUTPUT61 material_ct_upper_bound(i_material),
+               2          material_density_lower_bound(i_material),
+               2          material_density_upper_bound(i_material);
+               2          (I5,2F12.5);
+               2          IF(material_ct_upper_bound(i_material)< material_ct_lower_bound |
+               2          material_density_lower_bound(i_material)<0 |
+               2          material_density_upper_bound(i_material) <
+               2          material_density_lower_bound(i_material))[
+               3              OUTPUT61;
+               3              (' CT no. or density out of range, or density upper bound <'/
+               3              ' density lower bound.  Try again.');
+               3              STOP;
+               3              ]
+               2
+               2          ]"finished entering ramp values"
+               1      ]
+               0
+               0  "Convert CT data into density data and input it into the correct
+               0  "regions
+               0
+               0  ct_low=0;
+               0  ct_high=0;
+               0
+               0  DO K=1,new_z_dim[
+               1      DO J=1,new_y_dim[
+               2          DO I=1,new_x_dim[
+               3              IF(New_CT_Data(I,J,K)<material_ct_lower_bound) [
+               4                  "assume this will be vacuum"
+               4                  New_CT_Data(I,J,K)=0;
+               4                  material_region($IRCTM(I,J,K))=0;
+               4                  density_region($IRCTM(I,J,K))=0;
+               4                  ct_low=ct_low+1;
+               4                  ]
+               3              ELSEIF(New_CT_Data(I,J,K) > material_ct_upper_bound(num_material))[
+               4                  New_CT_Data(I,J,K)=material_ct_upper_bound(num_material);
+               4                  material_region($IRCTM(I,J,K))=num_material;
+               4                  density_region($IRCTM(I,J,K))=
+               4                  material_density_upper_bound(num_material);
+               4                  ct_high=ct_high+1;
+               4                  ]
+               3              ELSE[
+               4                  DO i_material=1,num_material[
+               5                      IF(New_CT_Data(I,J,K)<= material_ct_upper_bound(i_material))[
+               6                          material_region($IRCTM(I,J,K))=i_material;
+               6                          IF (i_material=1)[ "on the first ramp"
+               7                              density_region($IRCTM(I,J,K))=
+               7                              material_density_lower_bound(i_material)+
+               7                              (New_CT_Data(I,J,K)-material_ct_lower_bound)*
+               7                              (material_density_upper_bound(i_material)-
+               7                              material_density_lower_bound(i_material))/
+               7                              (material_ct_upper_bound(i_material)-
+               7                              material_ct_lower_bound);
+               7                              material_region($IRCTM(I,J,K))=1;
+               7                              ]
+               6                          ELSE[ "on a higher ramp"
+               7                              density_region($IRCTM(I,J,K))=
+               7                              material_density_lower_bound(i_material)+
+               7                              (New_CT_Data(I,J,K)-material_ct_upper_bound(i_material-1))*
+               7                              (material_density_upper_bound(i_material)-
+               7                              material_density_lower_bound(i_material))/
+               7                              (material_ct_upper_bound(i_material)-
+               7                              material_ct_upper_bound(i_material-1));
+               7                              material_region($IRCTM(I,J,K))=i_material;
+               7                              ]
+               6                          EXIT;
+               6                          ]
+               5                      ]
+               4                  ]
+               3              ]
+               2          ]
+               1      ];
+               0  IF(ct_low>0)[
+               1      OUTPUT61 ct_low,material_ct_lower_bound;
+               1      (/' Warning: CT number in ',I10,' voxels is < min. CT number of '/
+               1      ' ramp (',I10,').  Medium in these voxels is set to 0 (vacuum).'/);
+               1      ]
+               0  IF(ct_high>0)[
+               1      OUTPUT61 ct_high,material_ct_upper_bound(num_material),num_material;
+               1      (/' Warning: CT number in ',I10,' voxels is > max. CT number of '/
+               1      ' ramp (',I10,').  Medium in these voxels is set to medium no. ',I4,/);
+               1      ]
+               0  "warning below is no longer necessary"
+               0
+               0
+               0
+               0
+               0
+               0
+               0
+               0
+               0
+               0
+               0
+               0
+               0
+               0
+               0
+               0
+               0
+               0
+               0
+               0
+               0  RETURN;
+               0  END;
+1              0  %E    "ctcreate.mortran - start of subroutine write_material"
+               0  "******************************************************************************
+               0  "---------------------------------------------------------------------------"
+               0  subroutine write_material(fname,iimax,jjmax,kkmax,xbnd,ybnd,zbnd,
+               0  rho,med,CT,CTformat);
+               0  "---------------------------------------------------------------------------"
+               0  "This writes a file in .3ddose format with arrays of density, medium number "
+               0  "and CT number for eventual display using PAW."
+               0  ;IMPLICIT NONE;
+               0  Character*256 fname;               "name of header file for CT data"
+               0  Character*80 ddataname;            "name of output file"
+               0  Character*60 CTformat;             "format of original binary CT data"
+               0  INTEGER iimax,                     "max number of x cells"
+               0  jjmax,                     "max number of y cells"
+               0  kkmax,                     "max number of z cells"
+               0  lnblnk1,
+               0  rindex,
+               0  ii,jj,kk;                  "indices"
+               0  REAL    xbnd($IMAX+1),             "voxel x boundaries"
+               0  ybnd($JMAX+1),             "voxel y boundaries"
+               0  zbnd($KMAX+1),             "voxel z boundaries"
+               0  rho($MXREG);               "linear array of doses"
+               0  Integer med($MXREG);               "linear array of dose uncertainties"
+               0  Integer*2 CT($IMAX,$JMAX,$KMAX);   "linear array of dose uncertainties"
+               0
+               0  REPLACE {$PLOTOUT#;} WITH {write(15,*){P1};}
+               0  REPLACE {$IRDWD(#,#,#)} WITH {({P1}+({P2}-1)*iimax+({P3}-1)*iimax*jjmax)}
+               0  ;
+               0  "check format of CT data"
+               0  IF(CTformat='CADPLAN')[
+               1      ddataname=fname(rindex(fname,'/')+1:lnblnk1(fname)) // '.CTforPAW';
+               1      ]
+               0  ELSEIF(CTformat='Pinnacle')[
+               1      ddataname=fname(rindex(fname,'/')+1:index(fname,'header')-1) // 'CTforPAW';
+               1      ]
+               0  ELSEIF(CTformat='DICOM')[
+               1      ddataname=fname(rindex(fname,'/')+1:lnblnk1(fname)-1) // '.CTforPAW';
+               1      ]
+               0  OUTPUT61 ddataname(:lnblnk1(ddataname));(/' Writing CT phantom data into ',
+               0  A,' for display.'/);
+               0
+               0  Open (15,file=ddataname,Status='new',ERR=:CTforPAWOPENERROR:);
+               0
+               0  $PLOTOUT iimax,jjmax,kkmax;
+               0  $PLOTOUT (xbnd(ii),ii=1,iimax+1);
+               0  $PLOTOUT (ybnd(jj),jj=1,jjmax+1);
+               0  $PLOTOUT (zbnd(kk),kk=1,kkmax+1);
+               0  $PLOTOUT (((rho($IRDWD(ii,jj,kk)),ii=1,iimax),jj=1,jjmax),kk=1,kkmax);
+               0  $PLOTOUT (((CT(ii,jj,kk),ii=1,iimax),jj=1,jjmax),kk=1,kkmax);
+               0  close(15);
+               0  RETURN;
+               0  :CTforPAWOPENERROR:
+               0  OUTPUT61 ddataname(:lnblnk1(ddataname));
+               0  (//' ***ERROR: '/
+               0  ' Cannot write to ',A,'.  File already exists.'//);
+               0  end;
+1              0  %E    "ctcreate.mortran - start of subroutine write_phantom"
+               0  "******************************************************************************
+               0  "
+               0  subroutine write_phantom(fname,nmed,media,
+               0  iimax,jjmax,kkmax,xbnd,ybnd,zbnd,
+               0  rho,med,CTformat);
+               0  "
+               0  "This subroutine writes out CT phantom data for reading by dosxyznrc"
+               0  "******************************************************************************
+               0  ;IMPLICIT NONE;
+               0  CHARACTER*256 fname;               "file name containing CT data"
+               0  CHARACTER*80 phantname;           "output file"
+               0  Character*4  media(24,$MXMED);     "Media names"
+               0  Character*60 CTformat;             "format of original binary CT data"
+               0  INTEGER nmed,                      "number of media"
+               0  iimax,                     "max number of x cells"
+               0  jjmax,                     "max number of y cells"
+               0  kkmax,                     "max number of z cells"
+               0  med($MXREG),               "linear array of media numbers"
+               0  lnblnk1,
+               0  rindex,
+               0  ii,jj,kk;                  "indices"
+               0  REAL    xbnd($IMAX+1),             "voxel x boundaries"
+               0  ybnd($JMAX+1),             "voxel y boundaries"
+               0  zbnd($KMAX+1),             "voxel z boundaries"
+               0  rho($MXREG),               "linear array of densities"
+               0  estepe($MXMED);            "linear array of estepe values"
+               0
+               0  character  encoding*62;
+               0  encoding = $ENCODING;
+               0
+               0  REPLACE {$IR(#,#,#)} WITH {(1 + {P1} + ({P2}-1)*iimax + ({P3}-1)*iimax*jjmax)}
+               0
+               0  ;
+               0  "open up the .egsphant file for outputting in the current directory"
+               0  "find out where the last / is"
+               0  IF(CTformat='CADPLAN')[
+               1      phantname=fname(rindex(fname,'/')+1:lnblnk1(fname)) // '.egsphant';
+               1      ]
+               0  ELSEIF(CTformat='Pinnacle')[
+               1      phantname=fname(rindex(fname,'/')+1:index(fname,'header')-1) // 'egsphant';
+               1      ]
+               0  ELSEIF(CTformat='DICOM')[
+               1      phantname=fname(rindex(fname,'/')+1:lnblnk1(fname)-1) // '.egsphant';
+               1      ]
+               0  OUTPUT61 phantname(:lnblnk1(phantname));(/' Writing CT phantom data into ',
+               0  A,' to be read by dosxyznrc.'/);
+               0
+               0  "set estepe to the default value.  This is a dummy line in the .egsphant"
+               0  "file, since this is controlled using the EGSnrc inputs."
+               0  DO ii=1,nmed [ estepe(ii)=1.0;]
+               0
+               0  Open (15,file=phantname,Status='new',ERR=:egsphantOPENERROR:);
+               0  WRITE(15,'(i2)') nmed;
+               0  DO ii=1,nmed [
+               1      Write(15,'(24a1)') (media(jj,ii),jj=1,24);
+               1      ]
+               0  WRITE(15,*) (estepe(ii),ii=1,nmed);
+               0  WRITE(15,'(3i5)') iimax,jjmax,kkmax;
+               0  WRITE(15,*) (xbnd(ii),ii=1,iimax+1);
+               0  WRITE(15,*) (ybnd(jj),jj=1,jjmax+1);
+               0  WRITE(15,*) (zbnd(kk),kk=1,kkmax+1);
+               0  DO kk=1,kkmax[
+               1      DO jj=1,jjmax[
+               2          WRITE(15,1399)
+               2          (encoding(med($IR(ii,jj,kk))+1:med($IR(ii,jj,kk))+1),ii=1,iimax);
+               2          ]
+               1      WRITE(15,*);
+               1      ]
+               0  1399 FORMAT($IMAXa1);
+               0  DO kk=1,kkmax[
+               1      DO jj=1,jjmax[
+               2          WRITE(15,*) (rho($IR(ii,jj,kk)),ii=1,iimax);
+               2          ]
+               1      WRITE(15,*);
+               1      ]
+               0  Close(15);
+               0  RETURN;
+               0  :egsphantOPENERROR:
+               0  OUTPUT61 phantname(:lnblnk1(phantname));
+               0  (//' ***ERROR: '/
+               0  ' Cannot write to ',A,'.  File already exists.'//);
+               0  end;
+               0  ;
+               0
+               0  FUNCTION rindex(c,a);
+               0  CHARACTER c*(*);
+               0  CHARACTER a*1;
+               0  INTEGER j,rindex;
+               0  DO j=LEN(c),1,-1[
+               1      IF (c(j:j) = a) [
+               2          rindex=j;
+               2          RETURN;
+               2          ]
+               1      ]
+               0  rindex=0;
+               0  RETURN;
+               0  end;
+               0  "******************************************************************************
+               0  "     end of ctcreate.mortran
+               0  %C80                                                                           ;
+               0  "#############################################################################"
+               0  "                                                                             "
+               0  "  EGSnrc function to get index of last non-blank character in a string       "
+               0  "  Copyright (C) 2015 National Research Council Canada                        "
+               0  "                                                                             "
+               0  "  This file is part of EGSnrc.                                               "
+               0  "                                                                             "
+               0  "  EGSnrc is free software: you can redistribute it and/or modify it under    "
+               0  "  the terms of the GNU Affero General Public License as published by the     "
+               0  "  Free Software Foundation, either version 3 of the License, or (at your     "
+               0  "  option) any later version.                                                 "
+               0  "                                                                             "
+               0  "  EGSnrc is distributed in the hope that it will be useful, but WITHOUT ANY  "
+               0  "  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS  "
+               0  "  FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for   "
+               0  "  more details.                                                              "
+               0  "                                                                             "
+               0  "  You should have received a copy of the GNU Affero General Public License   "
+               0  "  along with EGSnrc. If not, see <http://www.gnu.org/licenses/>.             "
+               0  "                                                                             "
+               0  "#############################################################################"
+               0  "                                                                             "
+               0  "  Authors:         Iwan Kawrakow, 2004                                       "
+               0  "                                                                             "
+               0  "  Contributors:                                                              "
+               0  "                                                                             "
+               0  "#############################################################################"
+               0
+               0
+               0  $INTEGER function lnblnk1(string);
+               0
+               0  "Function to return index of last non-blank character in a string"
+               0  "We use this instead of lnblnk because there are compilers"
+               0  "that do not have lnblnk"
+               0
+               0  "******************************************************************************
+               0  character*(*) string;
+               0  DO i=len(string),1,-1 [
+               1      j = ichar(string(i:i));
+               1      IF( j = 0 ) [ lnblnk1 = i-1; return; ] "i.e. the same as strlen for "
+               1      "0-terminated C-strings"
+               1      IF( j ~= 9 & j ~= 10 & j ~= 11 & j ~= 12 & j ~= 13 & j ~= 32 ) [
+               2          lnblnk1 = i; return;
+               2          ]
+               1      ]
+               0  lnblnk1 = 0; return; end;
+               0
+          END OF MORTRAN INPUT
+  97      PERCENT RULE CAPACITY REMAINING
+          NO MORTRAN ERRORS DETECTED
